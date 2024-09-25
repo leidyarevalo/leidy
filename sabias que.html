@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabías que - Poguiagro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e6ffe6, #ccffcc);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #006a4e;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        header:hover {
+            background-color: #004d3b;
+            color: #b3ffcc;
+        }
+
+        main {
+            margin: 20px;
+            padding: 20px;
+            background-color: #f0fdf0;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #005e4e;
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 40px;
+        }
+
+        .fact-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            background-color: #e6ffe6;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .fact-container:hover {
+            transform: scale(1.05);
+            background-color: #d4fdd4;
+        }
+
+        .fact-text {
+            flex: 1;
+            padding-right: 20px;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .fact-container:hover .fact-text {
+            color: #006644;
+        }
+
+        .fact-image {
+            flex-shrink: 0;
+            width: 150px;
+            transition: transform 0.3s ease;
+        }
+
+        .fact-container:hover .fact-image {
+            transform: rotate(10deg);
+        }
+
+        .fact-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        footer {
+            background-color: #004d3b;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer:hover {
+            background-color: #002a1f;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    Sabías que - Curiosidades sobre la agricultura
+</header>
+
+<main>
+    <h2>Curiosidades</h2>
+
+    <!-- Primer dato curioso -->
+    <div class="fact-container">
+        <div class="fact-text">
+            <p><strong>Sabías que...</strong> Las fresas no son técnicamente frutas, ya que sus semillas están en el exterior. ¡Cada fresa tiene un promedio de 200 semillas en su superficie!</p>
+        </div>
+        <div class="fact-image">
+            <img src="img/fresa" alt="Fresas">
+        </div>
+    </div>
+
+    <!-- Segundo dato curioso -->
+    <div class="fact-container">
+        <div class="fact-text">
+            <p><strong>Sabías que...</strong> El maíz es uno de los cultivos más antiguos del mundo, y fue domesticado por primera vez hace más de 10,000 años en el actual México.</p>
+        </div>
+        <div class="fact-image">
+            <img src="img/maiz" alt="Maíz">
+        </div>
+    </div>
+
+    <!-- Tercer dato curioso -->
+    <div class="fact-container">
+        <div class="fact-text">
+            <p><strong>Sabías que...</strong> El aguacate es una fruta, y técnicamente, es una baya grande. Además, los aguacates nunca maduran completamente en el árbol, lo hacen una vez cosechados.</p>
+        </div>
+        <div class="fact-image">
+            <img src="img/aguacate.jpg" alt="Aguacate">
+        </div>
+    </div>
+
+    <!-- Cuarto dato curioso -->
+    <div class="fact-container">
+        <div class="fact-text">
+            <p><strong>Sabías que...</strong> La producción de café es crucial para más de 70 países, y Brasil es el mayor productor mundial, proporcionando aproximadamente un tercio del suministro global.</p>
+        </div>
+        <div class="fact-image">
+            <img src="img/cafe.jpg" alt="Café">
+        </div>
+    </div>
+
+    <!-- Quinto dato curioso -->
+    <div class="fact-container">
+        <div class="fact-text">
+            <p><strong>Sabías que...</strong> Un solo litro de miel requiere que las abejas visiten alrededor de 4 millones de flores y vuelen una distancia equivalente a dar la vuelta al mundo cuatro veces.</p>
+        </div>
+        <div class="fact-image">
+            <img src="img/miel.jpeg" alt="Miel">
+        </div>
+    </div>
+
+    <!-- Sexto dato curioso -->
+    <div class="fact-container">
+        <div class="fact-text">
+            <p><strong>Sabías que...</strong> Las papas fueron el primer alimento cultivado en el espacio. Los astronautas de la NASA lograron este hito en 1995 a bordo del transbordador espacial Columbia.</p>
+        </div>
+        <div class="fact-image">
+            <img src="img/papa.jpg" alt="Papas">
+        </div>
+    </div>
+
+    <!-- Séptimo dato curioso -->
+    <div class="fact-container">
+        <div class="fact-text">
+            <p><strong>Sabías que...</strong> Las zanahorias originalmente no eran naranjas. Las primeras zanahorias cultivadas eran de colores púrpura, rojo, blanco y amarillo, y solo en el siglo XVII comenzaron a ser naranjas.</p>
+        </div>
+        <div class="fact-image">
+            <img src="img/zana.jpg" alt="Zanahorias">
+        </div>
+    </div>
+
+    <!-- Octavo dato curioso -->
+    <div class="fact-container">
+        <div class="fact-text">
+            <p><strong>Sabías que...</strong> La quinoa, un superalimento moderno, fue domesticada hace más de 5,000 años en las alturas de los Andes, y era uno de los principales alimentos de las civilizaciones precolombinas.</p>
+        </div>
+        <div class="fact-image">
+            <img src="img/quino.jpeg" alt="Quinoa">
+        </div>
+    </div>
+
+</main>
+
+<footer>
+    &copy; 2024 Poguiagro - Todos los derechos reservados.
+</footer>
+
+</body>
+</html>

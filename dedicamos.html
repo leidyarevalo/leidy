@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A qué nos dedicamos - Poguiagro</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Fondo y diseño de la página */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #e8f5e9, #dcedc8); /* Gradiente de colores agrícolas suaves */
+            background-attachment: fixed; /* Fijar el fondo para efecto parallax */
+            color: #333;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilos para el header */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: rgba(168, 213, 226, 0.8); /* Color pastel con opacidad */
+            padding: 10px 20px;
+            border-bottom: 2px solid #b3e4d2;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para el encabezado */
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        header:hover {
+            background-color: rgba(150, 200, 220, 0.8);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al pasar el cursor */
+        }
+
+        .header-logo {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-logo img {
+            height: 100px; /* Tamaño del logo */
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .header-logo img:hover {
+            transform: scale(1.15);
+            opacity: 0.9;
+        }
+
+        .header-message {
+            background-color: #e0f7df; /* Color pastel */
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.3s;
+            cursor: pointer;
+            text-align: center;
+            flex: 2;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-message:hover {
+            background-color: #c1e3b2; /* Color pastel más claro */
+            transform: scale(1.05);
+        }
+
+        .header-message:active {
+            background-color: #a8d5e2; /* Color pastel más oscuro */
+            transform: scale(0.98);
+        }
+
+        .header-message a {
+            color: #005e4e; /* Color destacado */
+            text-decoration: none; /* Sin subrayado */
+            font-size: 20px;
+            font-weight: bold;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        .header-message a:hover {
+            text-decoration: underline;
+            color: #003d2b; /* Color más oscuro al pasar el cursor */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Estilos para el main */
+        main {
+            padding: 20px;
+            background: rgba(240, 255, 240, 0.9); /* Fondo blanco con un toque verde pálido */
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            margin: 20px auto;
+            max-width: 1200px;
+            position: relative;
+        }
+
+        /* Contenedor de texto con video alineado */
+        .content-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            gap: 20px; /* Espacio entre texto y video */
+            transition: transform 0.3s ease;
+        }
+
+        .content-section:hover {
+            transform: scale(1.02); /* Leve aumento al pasar el cursor */
+        }
+
+        .text-content {
+            flex: 2;
+            background-color: #e8f5e9; /* Fondo verde claro */
+            padding: 20px;
+            border-radius: 10px;
+            transition: background-color 0.3s, padding 0.3s;
+        }
+
+        .text-content:hover {
+            background-color: #c8e6c9; /* Fondo más claro al pasar el cursor */
+            padding: 22px; /* Aumento de padding para efecto de hover */
+        }
+
+        .video-container {
+            flex: 1;
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .video-container:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+            transform: scale(1.02); /* Leve aumento al pasar el cursor */
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .video-container video:hover {
+            transform: scale(1.02); /* Leve aumento al pasar el cursor sobre el video */
+        }
+
+        h2 {
+            color: #005e4e; /* Color destacado */
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            font-size: 28px;
+            transition: transform 0.3s ease;
+            text-align: center;
+            width: 100%; /* Para centrar el título horizontalmente */
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 5px;
+            background-color: #005e4e;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease;
+        }
+
+        h2:hover::before {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        .presentacion {
+            font-size: 16px; /* Tamaño de fuente */
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #e8f5e9; /* Color pastel verde claro */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.3s ease;
+        }
+
+        .presentacion:hover {
+            background-color: #c8e6c9; /* Fondo más claro al pasar el cursor */
+            transform: scale(1.02); /* Leve aumento al pasar el cursor */
+        }
+
+        /* Estilos para el pie de página */
+        footer {
+            background-color: rgba(168, 213, 226, 0.8); /* Color pastel con opacidad */
+            padding: 20px;
+            margin-top: 40px; /* Espacio entre el contenido y el pie de página */
+            text-align: center;
+            font-size: 14px;
+            border-top: 2px solid #b3e4d2;
+            position: relative;
+            z-index: 1;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        footer:hover {
+            background-color: rgba(150, 200, 220, 0.8); /* Color pastel más claro */
+            color: #003d2b; /* Color del texto más oscuro */
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Estilos para el modal */
+        #modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        #modal div {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            transition: transform 0.3s ease;
+        }
+
+        #modal div:hover {
+            transform: scale(1.02); /* Leve aumento al pasar el cursor sobre el modal */
+        }
+
+        #modal p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        #modal button {
+            background: #005e4e; /* Color del botón */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        #modal button:hover {
+            background-color: #004d40; /* Color del botón más oscuro al pasar el cursor */
+            transform: scale(1.05); /* Leve aumento al pasar el cursor sobre el botón */
+        }
+
+        #modal button:active {
+            background-color: #003d2b; /* Color del botón aún más oscuro cuando se presiona */
+            transform: scale(0.98); /* Leve reducción al presionar el botón */
+        }
+
+        /* Estilo del modal visible */
+        #modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #modal.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-logo">
+            <img src="img/logo.jpg" alt="Poguiagro Logo">
+        </div>
+        <div class="header-message" onclick="openModal()">
+            <a href="#">¡Conocer es vivir!</a>
+        </div>
+    </header>
+
+    <main>
+        <h2>A qué nos dedicamos</h2>
+
+        <div class="content-section">
+            <div class="text-content">
+                <h3>Nuestro Enfoque</h3>
+                <p>
+                    En Poguiagro, nos dedicamos a mejorar las prácticas agrícolas en el municipio de Buenavista, Boyacá. Nuestro enfoque se basa en la implementación de técnicas innovadoras y sostenibles que no solo incrementan la productividad, sino que también preservan el medio ambiente. Creemos en la agricultura como un pilar fundamental para el desarrollo y el bienestar de la comunidad.
+                </p>
+            </div>
+            <div class="video-container">
+                <video controls>
+                    <source src="videos/enfoque.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="text-content">
+                <h3>Actividades y Servicios</h3>
+                <p>
+                    Ofrecemos una gama de servicios diseñados para apoyar a los agricultores locales. Desde asesoramiento técnico y capacitación en técnicas agrícolas avanzadas hasta la provisión de recursos y herramientas que faciliten la siembra y cosecha. Trabajamos estrechamente con los agricultores para adaptar nuestras soluciones a sus necesidades específicas.
+                </p>
+            </div>
+            <div class="video-container">
+                <video controls>
+                    <source src="videos/actividades.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="text-content">
+                <h3>Objetivos y Metas</h3>
+                <p>
+                    Nuestro objetivo principal es fomentar una agricultura más eficiente y sostenible en la región. Buscamos alcanzar metas como la reducción del uso de recursos, el aumento de la producción de cultivos clave y la promoción de prácticas que respeten y preserven el entorno natural. A través de nuestra labor, aspiramos a mejorar la calidad de vida de los agricultores y contribuir al desarrollo económico de Buenavista.
+                </p>
+            </div>
+            <div class="video-container">
+                <video controls>
+                    <source src="videos/metas.mp4" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Poguiagro. Todos los derechos reservados.</p>
+    </footer>
+
+    <div id="modal" class="hide">
+        <div>
+            <p>Más información sobre '¡Conocer es vivir!'. Aquí se puede incluir texto adicional, enlaces, o cualquier contenido relevante.</p>
+            <button onclick="closeModal()">Cerrar</button>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('modal').classList.add('show');
+            document.getElementById('modal').classList.remove('hide');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.add('hide');
+            document.getElementById('modal').classList.remove('show');
+        }
+    </script>
+</body>
+</html>
+

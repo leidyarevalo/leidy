@@ -1,0 +1,1096 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información sobre el lulo</title>
+    <style>
+        /* Estilos del Encabezado */
+        body {
+            background: linear-gradient(135deg, #e6ffe6, #ccffcc);
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centrar horizontalmente */
+            line-height: 1.5;
+            text-align: center; /* Centrar texto en todo el cuerpo */
+        }
+    
+        #beneficios {
+            margin: 20px; /* Espaciado alrededor del contenido */
+        }
+    
+        .benefit-list {
+            list-style-type: none; /* Eliminar viñetas */
+            padding: 0; /* Sin padding */
+            margin: 0; /* Sin margin */
+        }
+    
+        .benefit-list li {
+            padding: 5px 0; /* Espaciado entre los elementos */
+            transition: background-color 0.3s, transform 0.3s;
+        }
+    
+        .benefit-list li:hover {
+            background-color: #a3d9b5; /* Verde pastel al pasar el cursor */
+            transform: scale(1.05); /* Escala al pasar el cursor */
+            cursor: pointer; /* Cambia el cursor */
+        }
+    
+        .fact-container {
+            display: flex;
+            justify-content: center; /* Centrar contenido de las tarjetas */
+            align-items: center;
+            margin-bottom: 20px;
+            background-color: #e6ffe6;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            cursor: pointer;
+        }
+    
+        .fact-container:hover {
+            transform: scale(1.05);
+            background-color: #d4fdd4;
+        }
+    
+        .fact-image {
+            flex-shrink: 0;
+            width: 150px;
+            transition: transform 0.3s ease;
+        }
+    
+        .fact-container:hover .fact-image {
+            transform: translateY(-10px) rotate(10deg); /* Mueve la imagen hacia arriba y la rota */
+        }
+    
+        .fact-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+    
+        header {
+            background-color: #ccf7da; /* Verde pastel */
+            color: #000000; /* Verde más oscuro */
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 5px solid #dbf1e6; /* Verde más claro */
+        }
+    
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+    
+        .header-logo {
+            max-width: 100px;
+            height: auto;
+            transition: transform 0.3s;
+        }
+    
+        .header-logo:hover {
+            transform: scale(1.1);
+        }
+    
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: bold;
+            transition: color 0.3s, transform 0.3s;
+        }
+    
+        header h1:hover {
+            color: #5cd881; /* Amarillo pastel */
+            transform: scale(1.05);
+        }
+    
+        marquee {
+            display: block;
+            margin: 10px 0;
+            font-size: 1.2rem;
+        }
+    
+        /* Contenedor de búsqueda */
+        .search-container {
+            margin-top: 10px;
+        }
+    
+        .search-container input {
+            padding: 8px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 4px;
+            outline: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+    
+        /* Menú de Navegación */
+        .menu {
+            display: flex;
+            justify-content: center;
+            background-color: #ccf7da; /* Verde más claro */
+            padding: 10px 0;
+            width: 100%;
+            border-top: 2px solid #a3d9b5;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+    
+        .menu a {
+            color: #ffffff; /* Blanco */
+            padding: 12px 20px;
+            text-decoration: none;
+            margin: 0 10px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+    
+        .menu a:hover {
+            background-color: #f9c54c; /* Amarillo pastel */
+            color: #5f7f6e; /* Verde oscuro */
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+    
+        .menu a.active {
+            background-color: #f9c54c;
+            color: white;
+        }
+    
+        /* Contenedor principal */
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            padding: 20px;
+        }
+    
+        /* Estilos para la tabla de cultivo */
+        .info-table {
+            width: 100%; /* Asegurarse que la tabla ocupe el 100% del contenedor */
+            margin: 20px auto; /* Centrar la tabla */
+            border-collapse: collapse; /* Colapsar bordes de la tabla */
+        }
+    
+        .info-table th, .info-table td {
+            border: 1px solid #ccc; /* Bordes de celda */
+            padding: 8px; /* Espaciado interno de las celdas */
+            text-align: center; /* Centrar texto en la tabla */
+        }
+    
+        .info-table th {
+            background-color: #c6e9d7; /* Verde más claro */
+            color: rgb(0, 0, 0);
+        }
+    
+        .info-table td:hover {
+            background-color: #a3d9b5; /* Verde pastel */
+            color: #000000; /* Verde oscuro */
+            cursor: pointer;
+        }
+    
+        /* Tarjetas */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap; /* Permitir que las tarjetas se ajusten */
+            justify-content: center; /* Centrar tarjetas */
+            margin: 20px 0; /* Espaciado arriba y abajo */
+            gap: 15px;
+        }
+    
+        .card {
+            background-color: #c4f0c4; /* Verde pastelo claro */
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex: 0 1 calc(30% - 20px); /* Ancho flexible para las tarjetas */
+            transition: transform 0.3s ease;
+            text-align: center; /* Centrar texto en las tarjetas */
+        }
+    
+        .card:hover {
+            transform: scale(1.05); /* Escalar tarjeta al pasar el cursor */
+        }
+    
+        /* Diseño de la cuadrícula */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+    
+        .grid-item {
+            background-color: #c4f0c4;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    
+        .grid-item h4 {
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+    
+        /* Interactividad */
+        .interactive {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+    
+        .interactive:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+    
+        /* Estilos para la sección de características */
+        .section h2 {
+            margin-top: 0;
+            font-size: 1.8rem;
+            color: #ffffff;
+            background-color: #77bb75; /* Verde más oscuro */
+            border: 2px solid #a3d9b5; /* Verde más claro */
+            padding: 12px;
+            border-radius: 8px;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+            display: inline-block;
+            text-align: center;
+            margin: 10px 0;
+        }
+    
+        .section h2:hover {
+            background-color: #8de2a2; /* Verde más oscuro */
+            color: #000000; /* Amarillo pastel */
+            transform: scale(1.05);
+        }
+    
+        /* Párrafos */
+        .section p {
+            line-height: 1.6;
+            color: #333;
+            transition: color 0.3s, transform 0.3s;
+            margin: 0 0 10px 0;
+            padding: 0 10px;
+        }
+    
+        .section p:hover {
+            color: #531111; /* Amarillo pastel */
+            transform: translateY(-2px);
+        }
+    
+        /* Imágenes y Videos */
+        .media-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+    
+        .media-container img,
+        .media-container video {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+    
+        /* Estilos para las ventanas modales */
+        .modal {
+            display: none; /* Oculta por defecto */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Habilita el scroll si es necesario */
+            background-color: rgba(0,0,0,0.8); /* Fondo negro con opacidad */
+            padding-top: 60px;
+        }
+    
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 10px;
+            animation: fadeIn 0.4s; /* Animación al abrir */
+        }
+    
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+    
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    
+        /* Animación de desvanecimiento */
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+    
+        .section {
+            display: none; /* Cambiar a 'block' para mostrar la sección */
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+        }
+    
+        h2, h3 {
+            color: #4CAF50;
+        }
+    
+        .media-container {
+            margin: 20px 0;
+        }
+    
+        .media-container img {
+            width: 100%;
+            border-radius: 10px;
+        }
+    
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+    
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+    
+        thead tr {
+            background-color: #4CAF50;
+            color: white;
+        }
+    
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+    
+        /* Estilos del Pie de Página */
+        footer {
+            background-color: #d1f3dc; /* Verde más claro */
+            color: #000000; /* Texto blanco */
+            text-align: center;
+            padding: 10px; /* Reducción adicional del padding */
+            width: 100%;
+            position: relative; /* Posición relativa */
+            bottom: 0; /* Al final de la página */
+            border-top: 5px solid #ffffff; /* Verde oscuro */
+            font-size: 0.9rem; /* Tamaño de fuente reducido */
+        }
+    
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+    
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 200px; /* Ancho del tooltip */
+            background-color: #555; /* Color de fondo */
+            color: #fff; /* Color del texto */
+            text-align: center; /* Alinear texto */
+            border-radius: 5px; /* Bordes redondeados */
+            padding: 5px; /* Espaciado interno */
+            position: absolute; /* Posición relativa al tooltip */
+            z-index: 1; /* Apilar encima */
+            bottom: 125%; /* Posición hacia arriba */
+            left: 50%;
+            margin-left: -100px; /* Centrar */
+            opacity: 0; /* Ocultar por defecto */
+            transition: opacity 0.3s; /* Transición suave */
+        }
+    
+        .tooltip:hover .tooltip-text {
+            visibility: visible; /* Mostrar al pasar el cursor */
+            opacity: 1; /* Hacer visible */
+        }
+        
+        .benefits-list {
+            list-style-type: none; /* Eliminar viñetas */
+            padding: 0; /* Sin padding */
+        }
+    
+        .interactive-benefit {
+            cursor: pointer; /* Cambiar el cursor */
+            transition: color 0.3s ease, transform 0.3s ease; /* Transición suave */
+            margin: 10px 0; /* Espaciado entre elementos */
+            padding: 5px; /* Espaciado interno */
+        }
+    
+        .interactive-benefit:hover {
+            color: #4CAF50; /* Cambiar color al pasar el cursor */
+            transform: scale(1.05); /* Ampliar ligeramente */
+            animation: pulse 0.5s; /* Pulsar al pasar el cursor */
+        }
+    
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    
+        .interactive-table {
+            border-collapse: collapse; /* Colapsar bordes de la tabla */
+            width: 80%; /* Ajustar el ancho de la tabla */
+            margin: 20px auto; /* Centrar la tabla */
+        }
+    
+        .interactive-table th, .interactive-table td {
+            border: 1px solid #ccc; /* Bordes de celda */
+            padding: 10px; /* Espaciado interno de las celdas */
+            text-align: center; /* Centrar texto en la tabla */
+            transition: background-color 0.3s; /* Transición para el fondo */
+        }
+    
+        .interactive-table tbody tr:hover {
+            background-color: #e6ffe6; /* Color de fondo al pasar el cursor */
+        }
+        .fact-image img {
+    width: 100%;
+    height: auto; /* Mantener proporciones */
+    max-width: 100%; /* Limitar el ancho máximo */
+    border-radius: 10px;
+}
+
+.grid-item img {
+    width: 200px; /* Ancho fijo */
+    height: 150px; /* Altura fija */
+    object-fit: cover; /* Ajusta la imagen y recorta si es necesario */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra de la imagen */
+}
+.media-container img {
+    width: 200px; /* Ancho fijo */
+    height: 150px; /* Altura fija */
+    object-fit: cover; /* Ajusta la imagen y recorta si es necesario */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra de la imagen */
+}
+
+
+    </style>
+    
+
+    
+
+</head>
+
+<!-- Encabezado -->
+<header>
+    <div class="header-container">
+        <img src="img/ñ+lulo.jpg" alt="Logo de Poguiagro" class="header-logo">
+        <h1>Planta sueños, cosecha realidades   </h1>
+    </div>
+</header>
+
+<!-- Menú de Navegación -->
+<div class="menu">
+    <button onclick="showSection('info')">Información</button>
+    <button onclick="showSection('siembra')">Siembra Orgánica</button>
+    <button onclick="showSection('datis')">Datos curiosos</button>
+    <button onclick="showSection('beneficios')">Beneficios</button>
+    <button onclick="showSection('juegos')">Juegos</button>
+</div>
+
+
+<!-- Contenedor Principal -->
+<div class="container">
+    <!-- Información Principal del Lulo (Incluye Cultivo) -->
+    <div id="info" class="section centered">
+        <h2>¿Qué es el Lulo?</h2>
+        <p>El lulo, conocido científicamente como <i>Solanum quitoense</i>, es una fruta tropical originaria de la región andina de Colombia y Ecuador. Su pulpa es jugosa y tiene un sabor distintivo, entre ácido y dulce, muy valorada en la gastronomía local.</p>
+        
+        <div class="media-container">
+            <video controls width="450"> <!-- Ajusta el ancho aquí -->
+                <source src="videos/lulo.mp4" type="video/mp4">
+            </video>
+            <p class="video-credit">Video obtenido de: <a href="https://youtu.be/c6M079mMNg4" target="_blank"> Secretos del campo</a></p>
+        </div>
+        <h3>Características Principales</h3>
+        <div class="card interactive">
+            <div class="content-container">
+                <ul>
+                    <li>Planta herbácea que puede crecer hasta 1.5 metros de altura, con hojas grandes y dentadas.</li>
+                    <li>Los frutos son de forma redonda, cubiertos de una piel espinosa, y su pulpa es de color amarillo a naranja.</li>
+                    <li>Rico en vitamina C, antioxidantes y fibra, beneficioso para la salud.</li>
+                </ul>
+                <div class="media-container">
+                    <img src="img/lulin" alt="Cultivo de Lulo" class="interactive">
+                </div>
+            </div>
+        </div>
+
+        <h3>Variedades de Lulo</h3>
+<div class="grid-container">
+    <div class="grid-item interactive">
+        <h4>Lulo Dulce</h4>
+        <p>Variedad de pulpa jugosa y dulce, perfecta para comer fresca o en batidos.</p>
+        <img src="img/lulodulce" alt="Lulo Dulce" class="interactive">
+    </div>
+    <div class="grid-item interactive">
+        <h4>Lulo Morado</h4>
+        <p>Variedad menos conocida, con un sabor intenso, ideal para salsas y postres.</p>
+        <img src="img/morado" alt="Lulo Morado" class="interactive">
+    </div>
+    <div class="grid-item interactive">
+        <h4>Lulo Criollo</h4>
+        <p>Variedad tradicional con un sabor equilibrado, excelente para jugos y helados.</p>
+        <img src="img/criollolulo" alt="Lulo Criollo" class="interactive">
+    </div>
+</div>
+
+
+        <h3>Cultivo del Lulo</h3>
+        <table class="info-table centered">
+            <tr>
+                <th>Aspecto</th>
+                <th>Descripción</th>
+            </tr>
+            <tr>
+                <td><strong>Clima</strong></td>
+                <td>Prefiere climas templados, con temperaturas entre 15 °C y 25 °C.</td>
+            </tr>
+            <tr>
+                <td><strong>Suelo</strong></td>
+                <td>Requiere suelos bien drenados, ricos en materia orgánica y ligeramente ácidos.</td>
+            </tr>
+            <tr>
+                <td><strong>Riego</strong></td>
+                <td>Necesita riego regular, especialmente durante la floración y fructificación.</td>
+            </tr>
+            <tr>
+                <td><strong>Plagas y Enfermedades</strong></td>
+                <td>Puede ser susceptible a plagas como la mosca blanca y enfermedades como el mildiu.</td>
+            </tr>
+            <tr>
+                <td><strong>Recolección</strong></td>
+                <td>Los frutos se cosechan cuando están maduros, generalmente a mano.</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Nueva sección: Siembra Orgánica -->
+<div id="siembra" class="section" style="display: none; text-align: center;">
+    <h2>Siembra Orgánica: Cultivando Lulo de Forma Sostenible</h2>
+    <p>La siembra orgánica es una técnica agrícola que evita el uso de productos químicos sintéticos, promoviendo el equilibrio ecológico y la biodiversidad. Esta técnica es ideal para el cultivo de lulo, ya que mejora la calidad del fruto y protege el medio ambiente.</p>
+    
+    <h3>Principios de la Siembra Orgánica</h3>
+    <div class="card-container">
+        <div class="card">
+            <strong>Uso de Abonos Naturales:</strong>
+            <p>Se utilizan abonos verdes, compost y ceniza de madera para enriquecer el suelo, promoviendo la actividad microbiana y mejorando la retención de humedad.</p>
+        </div>
+        <div class="card">
+            <strong>Rotación de Cultivos:</strong>
+            <p>Alternar el cultivo de lulo con otras especies ayuda a prevenir plagas y enfermedades, mejorando la salud del suelo y la biodiversidad.</p>
+        </div>
+        <div class="card">
+            <strong>Control Integrado de Plagas:</strong>
+            <p>Combinar métodos biológicos, culturales y físicos para el manejo de plagas, reduciendo la dependencia de pesticidas y protegiendo los enemigos naturales.</p>
+        </div>
+        <div class="card">
+            <strong>Uso de Cobertura Vegetal:</strong>
+            <p>Plantar cultivos de cobertura para proteger el suelo, reducir la erosión y aumentar la materia orgánica, lo que beneficia el crecimiento del lulo.</p>
+        </div>
+        <div class="card">
+            <strong>Fomento de la Diversidad:</strong>
+            <p>Promover un ecosistema diverso mediante la integración de diferentes cultivos y plantas, lo que atrae polinizadores y controla plagas de manera natural.</p>
+        </div>
+    
+    </div>
+    
+    <h3>Pasos para una Siembra Orgánica Exitosa de Lulo</h3>
+    <table class="interactive-table" style="margin: 0 auto;">
+        <thead>
+            <tr>
+                <th>Paso</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Preparar el terreno con abonos naturales y compost, asegurando un pH adecuado (entre 5.5 y 6.5) para el lulo.</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Seleccionar variedades de lulo que sean resistentes a enfermedades y que se adapten bien al clima local.</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Implementar técnicas de control biológico, como la siembra de hierbas que atraen insectos beneficiosos.</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Utilizar un sistema de riego eficiente, como riego por goteo, para conservar agua y evitar el encharcamiento.</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Monitorear el crecimiento de las plantas y aplicar soluciones naturales para el control de plagas, como infusiones de ajo o neem.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>¿Sabías qué?</h3>
+    <p>El lulo es conocido por su sabor único y refrescante, además de ser rico en vitamina C y antioxidantes, perfecto para jugos y postres.</p>
+</div>
+
+
+
+<!-- Agregar Google Fonts para una fuente elegante -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:wght@400;700&family=Montserrat:wght@400;600&family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+<style>
+    body {
+        font-family: 'Lora', serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h2 {
+        font-family: 'Playfair Display', serif;
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .accordion {
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    .accordion-item {
+        border: none;
+        border-radius: 10px;
+        margin: 15px 0;
+        background-color: #ffffff;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s, transform 0.3s;
+    }
+
+    .accordion-item:hover {
+        transform: scale(1.02);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .accordion-header {
+        padding: 20px;
+        cursor: pointer;
+        font-weight: bold;
+        color: #444;
+        transition: background-color 0.3s, color 0.3s;
+        font-family: 'Lora', serif;
+        font-size: 1em;
+    }
+
+    .accordion-header:hover {
+        background-color: #e0f7fa;
+        color: #00695c;
+    }
+
+    .accordion-content {
+        padding: 20px;
+        display: none;
+        color: #555;
+        font-family: 'Lora', serif;
+        background-color: #f0f0f0;
+        border-top: 1px solid #ddd;
+    }
+</style>
+
+</head>
+<body>
+<div id="datis" class="section active">
+    <h2>Curiosidades sobre el Lulo</h2>
+
+    <div class="accordion">
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <strong>🍊 Sabías que...</strong> El lulo es conocido por su sabor agridulce, similar al de la piña y el kiwi.
+            </div>
+            <div class="accordion-content">
+                Es muy popular en la región andina de Colombia y Ecuador.
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <strong>🌱 Sabías que...</strong> El lulo se cultiva principalmente a altitudes entre 1,500 y 2,500 metros.
+            </div>
+            <div class="accordion-content">
+                Prefiere climas cálidos y húmedos, ideal para su crecimiento.
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <strong>🥤 Sabías que...</strong> Se utiliza frecuentemente para preparar jugos y bebidas refrescantes.
+            </div>
+            <div class="accordion-content">
+                Su pulpa es excelente para hacer cócteles y batidos.
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <strong>🍃 Sabías que...</strong> El lulo es rico en vitamina C y antioxidantes.
+            </div>
+            <div class="accordion-content">
+                Contribuye a fortalecer el sistema inmunológico y mejorar la salud de la piel.
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <strong>🌍 Sabías que...</strong> El lulo es un símbolo de la biodiversidad andina.
+            </div>
+            <div class="accordion-content">
+                Es apreciado no solo por su sabor, sino también por su valor cultural.
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <strong>🌿 Sabías que...</strong> Sus hojas y raíces también se utilizan en la medicina tradicional.
+            </div>
+            <div class="accordion-content">
+                Se cree que tienen propiedades antiinflamatorias y digestivas.
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <strong>🍰 Sabías que...</strong> Se puede utilizar en postres, mermeladas y salsas.
+            </div>
+            <div class="accordion-content">
+                Su sabor único realza muchos platillos.
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <strong>🧑‍🌾 Sabías que...</strong> El lulo es una planta perenne que puede producir frutos durante varios años.
+            </div>
+            <div class="accordion-content">
+                Una vez establecida, requiere poco mantenimiento.
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <strong>🌺 Sabías que...</strong> Las flores del lulo son hermosas y atraen a polinizadores como abejas y mariposas.
+            </div>
+            <div class="accordion-content">
+                Esto contribuye a la biodiversidad en su entorno.
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <strong>🌞 Sabías que...</strong> El lulo necesita mucha luz solar para crecer adecuadamente.
+            </div>
+            <div class="accordion-content">
+                Idealmente debe recibir al menos 6 horas de sol al día.
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleAccordion(header) {
+        const content = header.nextElementSibling;
+        content.style.display = content.style.display === "block" ? "none" : "block";
+    }
+</script>
+
+
+
+
+
+
+
+</main>
+<div id="beneficios" class="section active" style="display: none;">
+    <h2>Beneficios para la Salud del Lulo</h2>
+    <p>El lulo es valorado no solo por su delicioso sabor, sino también por sus numerosos beneficios para la salud. Su consumo puede proporcionar varios beneficios, tales como:</p>
+    
+    <ul class="benefit-list">
+        <li>
+            <strong>Fuente de Vitaminas:</strong>
+            <span class="tooltip">Rico en vitamina C y antioxidantes.
+                <span class="tooltip-text">Ayuda a fortalecer el sistema inmunológico y a combatir el estrés oxidativo.</span>
+            </span>
+        </li>
+        <li>
+            <strong>Propiedades Antiinflamatorias:</strong>
+            <span class="tooltip">Ayuda a reducir la inflamación.
+                <span class="tooltip-text">Los compuestos antioxidantes pueden combatir procesos inflamatorios.</span>
+            </span>
+        </li>
+        <li>
+            <strong>Beneficios Digestivos:</strong>
+            <span class="tooltip">Promueve una buena digestión.
+                <span class="tooltip-text">Su contenido de fibra ayuda a regular el tránsito intestinal.</span>
+            </span>
+        </li>
+        <li>
+            <strong>Control de Peso:</strong>
+            <span class="tooltip">Bajo en calorías.
+                <span class="tooltip-text">Su bajo contenido calórico lo hace ideal para dietas de control de peso.</span>
+            </span>
+        </li>
+        <li>
+            <strong>Hidratación Natural:</strong>
+            <span class="tooltip">Contiene alto contenido de agua.
+                <span class="tooltip-text">Ideal para mantenerse hidratado, especialmente en climas cálidos.</span>
+            </span>
+        </li>
+    </ul>
+
+    <h3>Beneficios Específicos</h3>
+    <div class="card-container">
+        <div class="card interactive">
+            <h4>Fuente de Vitaminas</h4>
+            <p>El lulo es rico en vitamina C, esencial para el sistema inmunológico y la salud de la piel.</p>
+        </div>
+        <div class="card interactive">
+            <h4>Propiedades Antiinflamatorias</h4>
+            <p>Sus antioxidantes ayudan a reducir la inflamación y protegen las células del daño.</p>
+        </div>
+        <div class="card interactive">
+            <h4>Beneficios Digestivos</h4>
+            <p>Su alto contenido de fibra favorece la digestión y previene problemas como el estreñimiento.</p>
+        </div>
+        <div class="card interactive">
+            <h4>Control de Peso</h4>
+            <p>Por su bajo contenido calórico, es ideal para incluir en dietas de control de peso.</p>
+        </div>
+        <div class="card interactive">
+            <h4>Hidratación Natural</h4>
+            <p>Con su alto contenido de agua, el lulo es perfecto para refrescarse y mantenerse hidratado.</p>
+        </div>
+    </div>
+
+    <h3>Tabla de Nutrientes por Porción de 100g de Lulo</h3>
+    <table class="info-table">
+        <thead>
+            <tr>
+                <th>Nutriente</th>
+                <th>Cantidad</th>
+                <th>% Valor Diario</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Calorías</td>
+                <td>50 kcal</td>
+                <td>2%</td>
+            </tr>
+            <tr>
+                <td>Carbohidratos</td>
+                <td>12 g</td>
+                <td>4%</td>
+            </tr>
+            <tr>
+                <td>Azúcares</td>
+                <td>6 g</td>
+                <td>7%</td>
+            </tr>
+            <tr>
+                <td>Potasio</td>
+                <td>330 mg</td>
+                <td>9%</td>
+            </tr>
+            <tr>
+                <td>Calcio</td>
+                <td>25 mg</td>
+                <td>2%</td>
+            </tr>
+            <tr>
+                <td>Hierro</td>
+                <td>0.4 mg</td>
+                <td>2%</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Estudios sobre los Beneficios del Lulo</h3>
+    <p>Investigaciones han mostrado que el consumo regular de lulo puede contribuir a la salud digestiva y a la hidratación, siendo muy valorado en dietas saludables. Además, sus propiedades antioxidantes han sido objeto de interés en estudios recientes.</p>
+</div>
+
+
+<!-- Juegos Interactivos -->
+<div id="juegos" class="section active" style="display: none;">
+    <h2>Juegos sobre el Lulo</h2>
+    <p>¡Aprende mientras te diviertes! A continuación, encontrarás algunos juegos interactivos relacionados con el lulo:</p>
+    <ul>
+        <div class="game">
+            <h3>Quiz sobre el Lulo</h3>
+            <div class="quiz-container">
+                <form id="quiz-form">
+                    <p>1. ¿Cuál es el hábitat natural del lulo?</p>
+                    <input type="radio" id="habitat1" name="quiz" value="Regiones tropicales">
+                    <label for="habitat1">Regiones tropicales</label><br>
+                    <input type="radio" id="habitat2" name="quiz" value="Áreas desérticas">
+                    <label for="habitat2">Áreas desérticas</label><br>
+                    <input type="radio" id="habitat3" name="quiz" value="Montañas altas">
+                    <label for="habitat3">Montañas altas</label><br>
+                    <input type="radio" id="habitat4" name="quiz" value="Praderas">
+                    <label for="habitat4">Praderas</label><br>
+
+                    <p>2. ¿Qué parte del lulo se consume?</p>
+                    <input type="radio" id="part1" name="quiz2" value="Raíz">
+                    <label for="part1">Raíz</label><br>
+                    <input type="radio" id="part2" name="quiz2" value="Fruto">
+                    <label for="part2">Fruto</label><br>
+                    <input type="radio" id="part3" name="quiz2" value="Hoja">
+                    <label for="part3">Hoja</label><br>
+                    <input type="radio" id="part4" name="quiz2" value="Semilla">
+                    <label for="part4">Semilla</label><br>
+
+                    <p>3. ¿Qué sabor se asocia comúnmente al lulo?</p>
+                    <input type="radio" id="flavor1" name="quiz3" value="Amargo">
+                    <label for="flavor1">Amargo</label><br>
+                    <input type="radio" id="flavor2" name="quiz3" value="Dulce">
+                    <label for="flavor2">Dulce</label><br>
+                    <input type="radio" id="flavor3" name="quiz3" value="Ácido">
+                    <label for="flavor3">Ácido</label><br>
+                    <input type="radio" id="flavor4" name="quiz3" value="Salado">
+                    <label for="flavor4">Salado</label><br>
+
+                    <p>4. ¿En qué región de América se cultiva mayormente el lulo?</p>
+                    <input type="radio" id="region1" name="quiz4" value="Andes">
+                    <label for="region1">Andes</label><br>
+                    <input type="radio" id="region2" name="quiz4" value="Amazonía">
+                    <label for="region2">Amazonía</label><br>
+                    <input type="radio" id="region3" name="quiz4" value="Caribe">
+                    <label for="region3">Caribe</label><br>
+                    <input type="radio" id="region4" name="quiz4" value="Pantanos">
+                    <label for="region4">Pantanos</label><br>
+
+                    <p>5. ¿Qué otro nombre se le da al lulo en algunos lugares?</p>
+                    <input type="radio" id="name1" name="quiz5" value="Nanches">
+                    <label for="name1">Nanches</label><br>
+                    <input type="radio" id="name2" name="quiz5" value="Lulo">
+                    <label for="name2">Lulo</label><br>
+                    <input type="radio" id="name3" name="quiz5" value="Cocona">
+                    <label for="name3">Cocona</label><br>
+                    <input type="radio" id="name4" name="quiz5" value="Chilacayote">
+                    <label for="name4">Chilacayote</label><br>
+
+                    <button type="button" onclick="checkQuiz()">Enviar</button>
+                </form>
+                <p id="quiz-result" class="quiz-result"></p>
+            </div>
+        </div>
+    </ul>
+</div>
+        <!-- Ventanas Modales -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <p>Contenido del Modal</p>
+            </div>
+        </div>
+        <!-- Pie de Página -->
+<footer class="footer">
+    <div class="footer-content">
+        <p>&copy; 2024 Poguiagro. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<script>
+
+function checkQuiz() {
+    const answers = {
+        quiz: 'Regiones tropicales',
+        quiz2: 'Fruto',
+        quiz3: 'Ácido',
+        quiz4: 'Andes',
+        quiz5: 'Cocona'
+    };
+
+    let score = 0;
+    let resultText = '';
+
+    // Verificar respuestas
+    Object.keys(answers).forEach((question, index) => {
+        const selectedAnswer = document.querySelector(`input[name="${question}"]:checked`);
+        if (selectedAnswer) {
+            if (selectedAnswer.value === answers[question]) {
+                resultText += `Pregunta ${index + 1}: Correcto!<br>`;
+                score++;
+            } else {
+                resultText += `Pregunta ${index + 1}: Incorrecto. La respuesta correcta es "${answers[question]}".<br>`;
+            }
+        } else {
+            resultText += `Pregunta ${index + 1}: No respondida.<br>`;
+        }
+    });
+
+    resultText += `Tu puntaje es: ${score} de ${Object.keys(answers).length}.`;
+    document.getElementById('quiz-result').innerHTML = resultText;
+}
+    <!-- Scripts -->
+
+    document.querySelectorAll('.hover-info').forEach(item => {
+    item.addEventListener('mouseenter', event => {
+        const tooltip = document.getElementById('tooltip');
+        tooltip.innerHTML = item.getAttribute('data-info');
+        tooltip.style.display = 'block';
+        tooltip.style.left = event.pageX + 'px';
+        tooltip.style.top = event.pageY + 'px';
+    });
+
+    item.addEventListener('mouseleave', () => {
+        document.getElementById('tooltip').style.display = 'none';
+    });
+});
+
+    // Mostrar solo la sección seleccionada y ocultar las demás
+    function showSection(sectionId) {
+        const sections = document.querySelectorAll('.section'); // Selecciona todas las secciones
+        sections.forEach(section => {
+            section.style.display = 'none'; // Oculta todas las secciones
+        });
+        document.getElementById(sectionId).style.display = 'block'; // Muestra la sección seleccionada
+    }
+
+
+
+// Mostrar la sección de información al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    showSection('info');
+});
+
+    // Función para cerrar modal
+    function closeModal() {
+        document.getElementById('modal').style.display = 'none';
+    }
+</script>
+
+        </body>
+        </html>
+        

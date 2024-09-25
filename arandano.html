@@ -1,0 +1,1089 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información sobre el arándano</title>
+    <style>
+        /* Estilos del Encabezado */
+        body {
+            background: linear-gradient(135deg, #e6ffe6, #ccffcc);
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centrar horizontalmente */
+            line-height: 1.5;
+            text-align: center; /* Centrar texto en todo el cuerpo */
+        }
+    
+        #beneficios {
+            margin: 20px; /* Espaciado alrededor del contenido */
+        }
+    
+        .benefit-list {
+            list-style-type: none; /* Eliminar viñetas */
+            padding: 0; /* Sin padding */
+            margin: 0; /* Sin margin */
+        }
+    
+        .benefit-list li {
+            padding: 5px 0; /* Espaciado entre los elementos */
+            transition: background-color 0.3s, transform 0.3s;
+        }
+    
+        .benefit-list li:hover {
+            background-color: #a3d9b5; /* Verde pastel al pasar el cursor */
+            transform: scale(1.05); /* Escala al pasar el cursor */
+            cursor: pointer; /* Cambia el cursor */
+        }
+    
+        .fact-container {
+            display: flex;
+            justify-content: center; /* Centrar contenido de las tarjetas */
+            align-items: center;
+            margin-bottom: 20px;
+            background-color: #e6ffe6;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            cursor: pointer;
+        }
+    
+        .fact-container:hover {
+            transform: scale(1.05);
+            background-color: #d4fdd4;
+        }
+    
+        .fact-image {
+            flex-shrink: 0;
+            width: 150px;
+            transition: transform 0.3s ease;
+        }
+    
+        .fact-container:hover .fact-image {
+            transform: translateY(-10px) rotate(10deg); /* Mueve la imagen hacia arriba y la rota */
+        }
+    
+        .fact-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+    
+        header {
+            background-color: #ccf7da; /* Verde pastel */
+            color: #000000; /* Verde más oscuro */
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 5px solid #dbf1e6; /* Verde más claro */
+        }
+    
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+    
+        .header-logo {
+            max-width: 100px;
+            height: auto;
+            transition: transform 0.3s;
+        }
+    
+        .header-logo:hover {
+            transform: scale(1.1);
+        }
+    
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: bold;
+            transition: color 0.3s, transform 0.3s;
+        }
+    
+        header h1:hover {
+            color: #5cd881; /* Amarillo pastel */
+            transform: scale(1.05);
+        }
+    
+        marquee {
+            display: block;
+            margin: 10px 0;
+            font-size: 1.2rem;
+        }
+    
+        /* Contenedor de búsqueda */
+        .search-container {
+            margin-top: 10px;
+        }
+    
+        .search-container input {
+            padding: 8px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 4px;
+            outline: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+    
+        /* Menú de Navegación */
+        .menu {
+            display: flex;
+            justify-content: center;
+            background-color: #ccf7da; /* Verde más claro */
+            padding: 10px 0;
+            width: 100%;
+            border-top: 2px solid #a3d9b5;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+    
+        .menu a {
+            color: #ffffff; /* Blanco */
+            padding: 12px 20px;
+            text-decoration: none;
+            margin: 0 10px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+    
+        .menu a:hover {
+            background-color: #f9c54c; /* Amarillo pastel */
+            color: #5f7f6e; /* Verde oscuro */
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+    
+        .menu a.active {
+            background-color: #f9c54c;
+            color: white;
+        }
+    
+        /* Contenedor principal */
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            padding: 20px;
+        }
+    
+        /* Estilos para la tabla de cultivo */
+        .info-table {
+            width: 100%; /* Asegurarse que la tabla ocupe el 100% del contenedor */
+            margin: 20px auto; /* Centrar la tabla */
+            border-collapse: collapse; /* Colapsar bordes de la tabla */
+        }
+    
+        .info-table th, .info-table td {
+            border: 1px solid #ccc; /* Bordes de celda */
+            padding: 8px; /* Espaciado interno de las celdas */
+            text-align: center; /* Centrar texto en la tabla */
+        }
+    
+        .info-table th {
+            background-color: #c6e9d7; /* Verde más claro */
+            color: rgb(0, 0, 0);
+        }
+    
+        .info-table td:hover {
+            background-color: #a3d9b5; /* Verde pastel */
+            color: #000000; /* Verde oscuro */
+            cursor: pointer;
+        }
+    
+        /* Tarjetas */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap; /* Permitir que las tarjetas se ajusten */
+            justify-content: center; /* Centrar tarjetas */
+            margin: 20px 0; /* Espaciado arriba y abajo */
+            gap: 15px;
+        }
+    
+        .card {
+            background-color: #c4f0c4; /* Verde pastelo claro */
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex: 0 1 calc(30% - 20px); /* Ancho flexible para las tarjetas */
+            transition: transform 0.3s ease;
+            text-align: center; /* Centrar texto en las tarjetas */
+        }
+    
+        .card:hover {
+            transform: scale(1.05); /* Escalar tarjeta al pasar el cursor */
+        }
+    
+        /* Diseño de la cuadrícula */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+    
+        .grid-item {
+            background-color: #c4f0c4;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    
+        .grid-item h4 {
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+    
+        /* Interactividad */
+        .interactive {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+    
+        .interactive:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+    
+        /* Estilos para la sección de características */
+        .section h2 {
+            margin-top: 0;
+            font-size: 1.8rem;
+            color: #ffffff;
+            background-color: #77bb75; /* Verde más oscuro */
+            border: 2px solid #a3d9b5; /* Verde más claro */
+            padding: 12px;
+            border-radius: 8px;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+            display: inline-block;
+            text-align: center;
+            margin: 10px 0;
+        }
+    
+        .section h2:hover {
+            background-color: #8de2a2; /* Verde más oscuro */
+            color: #000000; /* Amarillo pastel */
+            transform: scale(1.05);
+        }
+    
+        /* Párrafos */
+        .section p {
+            line-height: 1.6;
+            color: #333;
+            transition: color 0.3s, transform 0.3s;
+            margin: 0 0 10px 0;
+            padding: 0 10px;
+        }
+    
+        .section p:hover {
+            color: #531111; /* Amarillo pastel */
+            transform: translateY(-2px);
+        }
+    
+        /* Imágenes y Videos */
+        .media-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+    
+        .media-container img,
+        .media-container video {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+    
+        /* Estilos para las ventanas modales */
+        .modal {
+            display: none; /* Oculta por defecto */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Habilita el scroll si es necesario */
+            background-color: rgba(0,0,0,0.8); /* Fondo negro con opacidad */
+            padding-top: 60px;
+        }
+    
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 10px;
+            animation: fadeIn 0.4s; /* Animación al abrir */
+        }
+    
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+    
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    
+        /* Animación de desvanecimiento */
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+    
+        .section {
+            display: none; /* Cambiar a 'block' para mostrar la sección */
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+        }
+    
+        h2, h3 {
+            color: #4CAF50;
+        }
+    
+        .media-container {
+            margin: 20px 0;
+        }
+    
+        .media-container img {
+            width: 100%;
+            border-radius: 10px;
+        }
+    
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+    
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+    
+        thead tr {
+            background-color: #4CAF50;
+            color: white;
+        }
+    
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+    
+        /* Estilos del Pie de Página */
+        footer {
+            background-color: #d1f3dc; /* Verde más claro */
+            color: #000000; /* Texto blanco */
+            text-align: center;
+            padding: 10px; /* Reducción adicional del padding */
+            width: 100%;
+            position: relative; /* Posición relativa */
+            bottom: 0; /* Al final de la página */
+            border-top: 5px solid #ffffff; /* Verde oscuro */
+            font-size: 0.9rem; /* Tamaño de fuente reducido */
+        }
+    
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+    
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 200px; /* Ancho del tooltip */
+            background-color: #555; /* Color de fondo */
+            color: #fff; /* Color del texto */
+            text-align: center; /* Alinear texto */
+            border-radius: 5px; /* Bordes redondeados */
+            padding: 5px; /* Espaciado interno */
+            position: absolute; /* Posición relativa al tooltip */
+            z-index: 1; /* Apilar encima */
+            bottom: 125%; /* Posición hacia arriba */
+            left: 50%;
+            margin-left: -100px; /* Centrar */
+            opacity: 0; /* Ocultar por defecto */
+            transition: opacity 0.3s; /* Transición suave */
+        }
+    
+        .tooltip:hover .tooltip-text {
+            visibility: visible; /* Mostrar al pasar el cursor */
+            opacity: 1; /* Hacer visible */
+        }
+        
+        .benefits-list {
+            list-style-type: none; /* Eliminar viñetas */
+            padding: 0; /* Sin padding */
+        }
+    
+        .interactive-benefit {
+            cursor: pointer; /* Cambiar el cursor */
+            transition: color 0.3s ease, transform 0.3s ease; /* Transición suave */
+            margin: 10px 0; /* Espaciado entre elementos */
+            padding: 5px; /* Espaciado interno */
+        }
+    
+        .interactive-benefit:hover {
+            color: #4CAF50; /* Cambiar color al pasar el cursor */
+            transform: scale(1.05); /* Ampliar ligeramente */
+            animation: pulse 0.5s; /* Pulsar al pasar el cursor */
+        }
+    
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    
+        .interactive-table {
+            border-collapse: collapse; /* Colapsar bordes de la tabla */
+            width: 80%; /* Ajustar el ancho de la tabla */
+            margin: 20px auto; /* Centrar la tabla */
+        }
+    
+        .interactive-table th, .interactive-table td {
+            border: 1px solid #ccc; /* Bordes de celda */
+            padding: 10px; /* Espaciado interno de las celdas */
+            text-align: center; /* Centrar texto en la tabla */
+            transition: background-color 0.3s; /* Transición para el fondo */
+        }
+    
+        .interactive-table tbody tr:hover {
+            background-color: #e6ffe6; /* Color de fondo al pasar el cursor */
+        }
+        .fact-image img {
+    width: 100%;
+    height: auto; /* Mantener proporciones */
+    max-width: 100%; /* Limitar el ancho máximo */
+    border-radius: 10px;
+}
+
+.grid-item img {
+    width: 200px; /* Ancho fijo */
+    height: 150px; /* Altura fija */
+    object-fit: cover; /* Ajusta la imagen y recorta si es necesario */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra de la imagen */
+}
+.media-container img {
+    width: 200px; /* Ancho fijo */
+    height: 150px; /* Altura fija */
+    object-fit: cover; /* Ajusta la imagen y recorta si es necesario */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra de la imagen */
+}
+
+
+    </style>
+
+</head>
+
+<!-- Encabezado -->
+<header>
+    <div class="header-container">
+        <img src="img/arandano.jpg" alt="Logo de Poguiagro" class="header-logo">
+        <h1>Saber y Tierra: Juntos para un Futuro Verde</h1>
+    </div>
+</header>
+
+<!-- Menú de Navegación -->
+<div class="menu">
+    <button onclick="showSection('info')">Información</button>
+    <button onclick="showSection('siembra')">Siembra Orgánica</button>
+    <button onclick="showSection('datis')">Datos curiosos</button>
+    <button onclick="showSection('beneficios')">Beneficios</button>
+    <button onclick="showSection('juegos')">Juegos</button>
+</div>
+
+<!-- Contenedor Principal -->
+<div class="container">
+    <!-- Información Principal del Arándano (Incluye Cultivo) -->
+    <div id="info" class="section centered">
+        <h2>¿Qué es el Arándano?</h2>
+        <p>El arándano, conocido científicamente como <i>Vaccinium corymbosum</i>, es una pequeña fruta azul que es muy apreciada por su sabor dulce y ácido, así como por sus múltiples beneficios para la salud. Originario de América del Norte, se ha vuelto popular en todo el mundo, tanto fresco como en jugos y productos procesados.</p>
+        
+        <div class="media-container">
+            <video controls width="450"> <!-- Ajusta el ancho aquí -->
+                <source src="videos/Arandadno.mp4" type="video/mp4">
+            </video>
+            <p class="video-credit">Video obtenido de: <a href="https://youtu.be/AYrwW5Mp9WE" target="_blank"> TvAgro      </a></p>
+        </div>
+
+        <h3>Características Principales</h3>
+        <div class="card interactive">
+            <div class="content-container">
+                <ul>
+                    <li>Fruto pequeño y redondeado, de color azul oscuro.</li>
+                    <li>Rico en antioxidantes, vitaminas y minerales.</li>
+                    <li>Posee un sabor dulce y ligeramente ácido.</li>
+                </ul>
+                <div class="media-container">
+                    <img src="img/arandano.jpg" alt="Cultivo de Arándanos" class="interactive">
+                </div>
+            </div>
+        </div>
+
+        <h3>Variedades de Arándano</h3>
+<div class="grid-container">
+    <div class="grid-item interactive">
+        <h4>Arándano Rojo</h4>
+        <p>Variedad que destaca por su color vibrante y su sabor agridulce, muy utilizada en mermeladas.</p>
+        <img src="img/rojoo.jpg" alt="Arándano Rojo" class="interactive">
+    </div>
+    <div class="grid-item interactive">
+        <h4>Arándano Azul</h4>
+        <p>La variedad más común, rica en antioxidantes y conocida por su sabor dulce y jugoso.</p>
+        <img src="img/azull" alt="Arándano Azul" class="interactive">
+    </div>
+    <div class="grid-item interactive">
+        <h4>Arándano Rosado</h4>
+        <p>Una variedad menos común, con un sabor suave y un color distintivo que lo hace atractivo.</p>
+        <img src="img/rosado" alt="Arándano Rosado" class="interactive">
+    </div>
+</div>
+
+
+        <h3>Cultivo del Arándano</h3>
+        <table class="info-table centered">
+            <tr>
+                <th>Aspecto</th>
+                <th>Descripción</th>
+            </tr>
+            <tr>
+                <td><strong>Clima</strong></td>
+                <td>Prefiere climas frescos y húmedos, con inviernos fríos.</td>
+            </tr>
+            <tr>
+                <td><strong>Suelo</strong></td>
+                <td>Necesita suelos ácidos, bien drenados y ricos en materia orgánica.</td>
+            </tr>
+            <tr>
+                <td><strong>Riego</strong></td>
+                <td>Requiere un riego regular, especialmente en períodos secos.</td>
+            </tr>
+            <tr>
+                <td><strong>Plagas y Enfermedades</strong></td>
+                <td>Puede verse afectado por plagas como el escarabajo del arándano y enfermedades fúngicas.</td>
+            </tr>
+            <tr>
+                <td><strong>Recolección</strong></td>
+                <td>Los frutos se cosechan a mano cuando alcanzan su máximo color y dulzura.</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Nueva sección: Siembra Orgánica -->
+<div id="siembra" class="section" style="display: none; text-align: center;">
+    <h2>Siembra Orgánica: Cultivando Arándanos de Forma Sostenible</h2>
+    <p>La siembra orgánica es una técnica agrícola que evita el uso de productos químicos sintéticos, promoviendo el equilibrio ecológico y la biodiversidad. Esta técnica es ideal para el cultivo de arándanos, que requieren un enfoque respetuoso con el medio ambiente para maximizar su sabor y calidad.</p>
+    
+    <h3>Principios de la Siembra Orgánica</h3>
+    <div class="card-container">
+        <div class="card">
+            <strong>Uso de Abonos Naturales:</strong>
+            <p>Se emplean compost y abonos orgánicos para enriquecer el suelo ácido que necesitan los arándanos, aportando nutrientes esenciales para su crecimiento.</p>
+        </div>
+        <div class="card">
+            <strong>Control Biológico de Plagas:</strong>
+            <p>Se utilizan insectos beneficiosos y prácticas de manejo integrado para controlar plagas como los pulgones y las cochinillas.</p>
+        </div>
+        <div class="card">
+            <strong>Rotación de Cultivos:</strong>
+            <p>Alternar el cultivo de arándanos con plantas que no sean del mismo género, como legumbres, ayuda a mantener la salud del suelo y a prevenir enfermedades.</p>
+        </div>
+        <div class="card">
+            <strong>Conservación del Suelo:</strong>
+            <p>Aplicar acolchado orgánico, como paja o astillas de madera, para mantener la humedad y la acidez del suelo, favoreciendo el crecimiento de los arándanos.</p>
+        </div>
+        <div class="card">
+            <strong>Uso Eficiente del Agua:</strong>
+            <p>Implementar riego por goteo o por aspersión para optimizar el uso del agua, evitando el encharcamiento que puede dañar las raíces de los arándanos.</p>
+        </div>
+    </div>
+    
+    <h3>Pasos para una Siembra Orgánica Exitosa de Arándanos</h3>
+    <table class="interactive-table" style="margin: 0 auto;">
+        <thead>
+            <tr>
+                <th>Paso</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Preparar el terreno con abonos orgánicos y compost, asegurando un pH adecuado (entre 4.5 y 5.5) para los arándanos.</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Elegir variedades de arándano que se adapten a tu clima local, como el arándano alto o bajo.</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Implementar técnicas de control biológico, como plantar hierbas aromáticas que atraen polinizadores y depredadores naturales.</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Realizar un riego eficiente y sostenible, preferiblemente mediante riego por goteo para evitar el encharcamiento.</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Monitorear constantemente el crecimiento y aplicar métodos naturales, como el uso de jabón insecticida, para el control de plagas.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>¿Sabías qué?</h3>
+    <p>Los arándanos son ricos en antioxidantes, como los antocianos, que se han asociado con múltiples beneficios para la salud, incluyendo la mejora de la memoria y la reducción del riesgo de enfermedades crónicas.</p>
+</div>
+
+
+    
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    body {
+        font-family: 'Lora', serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h2 {
+        font-family: 'Playfair Display', serif;
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .accordion {
+        max-width: 800px;
+        margin: auto;
+    }
+
+    .accordion-item {
+        border: none;
+        border-radius: 10px;
+        margin: 15px 0;
+        background-color: #ffffff;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s, transform 0.3s;
+    }
+
+    .accordion-item:hover {
+        transform: scale(1.02);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .accordion-header {
+        padding: 20px;
+        cursor: pointer;
+        font-weight: bold;
+        color: #444;
+        transition: background-color 0.3s, color 0.3s;
+        font-family: 'Lora', serif;
+        font-size: 1em;
+    }
+
+    .accordion-header:hover {
+        background-color: #e0f7fa;
+        color: #00695c;
+    }
+
+    .accordion-content {
+        padding: 20px;
+        display: none;
+        color: #555;
+        font-family: 'Lora', serif;
+        background-color: #f0f0f0;
+        border-top: 1px solid #ddd;
+    }
+</style>
+</head>
+<body>
+<div id="datis" class="section active">
+<h2>Curiosidades sobre los Arándanos</h2>
+
+<div class="accordion">
+    <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+            <strong>☀️ Sabías que... </strong>  La Influencia de la Luz Solar en el Sabor de los Arándanos y su Crecimiento
+        </div>
+        <div class="accordion-content">
+            La luz solar afecta el crecimiento y el sabor de los arándanos. Más luz significa arándanos más dulces y sabrosos.
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+            <strong>🧪Sabías que... </strong> Propiedades Antioxidantes de los Arándanos y su Importancia para la Salud
+        </div>
+        <div class="accordion-content">
+            Ricos en antioxidantes, los arándanos ayudan a combatir el estrés oxidativo y pueden reducir el riesgo de enfermedades crónicas.
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+            <strong>🌱Sabías que...</strong> Necesidades de Suelo Ácido para el Crecimiento Óptimo de los Arándanos
+        </div>
+        <div class="accordion-content">
+            Prefieren suelos ácidos con un pH entre 4.5 y 5.5, lo que mejora la absorción de nutrientes esenciales.
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+            <strong> 🩺Sabías que... </strong> Usos Históricos de los Arándanos en Medicina Tradicional Indígena
+        </div>
+        <div class="accordion-content">
+            Usados por comunidades indígenas para tratar infecciones urinarias y problemas digestivos, reflejando su valor medicinal.
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+            <strong>💞Sabías que... </strong> El Significado Cultural de los Arándanos como Símbolo de Amor
+        </div>
+        <div class="accordion-content">
+            Considerados un símbolo de amor en diversas culturas, se utilizan en ceremonias para traer felicidad y bienestar.
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+            <strong>🐛 Sabías que... </strong> El Mildiú Polvoriento y su Impacto en la Producción de Arándanos
+        </div>
+        <div class="accordion-content">
+            Esta enfermedad fúngica puede afectar gravemente la producción. Los agricultores implementan controles para manejarla.
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+            <strong>❄️ Sabías que... </strong>  La Congelación Rápida como Método de Preservación de Arándanos Frescos
+        </div>
+        <div class="accordion-content">
+            La congelación rápida ayuda a conservar el sabor y los nutrientes, ideal para su uso en diversas recetas.
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+            <strong>🎉 Sabías que...</strong>  Festivales de Cosecha: Celebrando la Comunidad y la Tradición del Arándano
+        </div>
+        <div class="accordion-content">
+            Se celebran festivales donde las comunidades disfrutan de actividades relacionadas con la cosecha y la cultura local.
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+            <strong>💄 Sabías que... </strong> Beneficios de los Arándanos en Productos Cosméticos y de Belleza
+        </div>
+        <div class="accordion-content">
+            Los arándanos se usan en productos de belleza por sus propiedades antioxidantes, ayudando a mejorar la piel y el cabello.
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+            <strong>🐝 Sabías que...</strong>La Complejidad de la Polinización en el Cultivo de Arándanos
+        </div>
+        <div class="accordion-content">
+            La polinización es crucial; algunas variedades dependen de polinizadores específicos, como las abejas, para producir frutos.
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+function toggleAccordion(header) {
+    const content = header.nextElementSibling;
+    content.style.display = content.style.display === "block" ? "none" : "block";
+}
+</script>
+
+
+
+<div id="beneficios" class="section active" style="display: none;">
+    <h2>Beneficios para la Salud de los Arándanos</h2>
+    <p>Los arándanos son conocidos no solo por su delicioso sabor y color vibrante, sino también por su impresionante perfil nutricional. Su consumo regular puede proporcionar varios beneficios para la salud, tales como:</p>
+    
+    <ul class="benefit-list">
+        <li>
+            <strong>Ricos en Antioxidantes:</strong>
+            <span class="tooltip">Contienen compuestos que protegen el cuerpo.
+                <span class="tooltip-text">Los antioxidantes ayudan a combatir el daño celular y el envejecimiento.</span>
+            </span>
+        </li>
+        <li>
+            <strong>Mejoran la Salud Cardiovascular:</strong>
+            <span class="tooltip">Contribuyen a la salud del corazón.
+                <span class="tooltip-text">Pueden ayudar a reducir la presión arterial y el colesterol LDL.</span>
+            </span>
+        </li>
+        <li>
+            <strong>Beneficios Cognitivos:</strong>
+            <span class="tooltip">Pueden mejorar la función cerebral.
+                <span class="tooltip-text">Estudios sugieren que los arándanos pueden ayudar a mejorar la memoria y el aprendizaje.</span>
+            </span>
+        </li>
+        <li>
+            <strong>Propiedades Antiinflamatorias:</strong>
+            <span class="tooltip">Ayudan a reducir la inflamación.
+                <span class="tooltip-text">Los compuestos en los arándanos pueden ayudar a combatir la inflamación en el cuerpo.</span>
+            </span>
+        </li>
+        <li>
+            <strong>Apoyo Digestivo:</strong>
+            <span class="tooltip">Contribuyen a una buena digestión.
+                <span class="tooltip-text">La fibra en los arándanos ayuda a mantener la salud intestinal.</span>
+            </span>
+        </li>
+    </ul>
+
+    <h3>Beneficios Específicos</h3>
+    <div class="card-container">
+        <div class="card interactive">
+            <h4>Ricos en Antioxidantes</h4>
+            <p>Los arándanos son una excelente fuente de antioxidantes, que protegen las células del daño oxidativo.</p>
+        </div>
+        <div class="card interactive">
+            <h4>Mejoran la Salud Cardiovascular</h4>
+            <p>Su consumo regular puede contribuir a reducir el riesgo de enfermedades del corazón.</p>
+        </div>
+        <div class="card interactive">
+            <h4>Beneficios Cognitivos</h4>
+            <p>Los arándanos pueden mejorar la memoria y la salud cerebral, especialmente en adultos mayores.</p>
+        </div>
+        <div class="card interactive">
+            <h4>Propiedades Antiinflamatorias</h4>
+            <p>Los compuestos bioactivos en los arándanos ayudan a reducir la inflamación en el organismo.</p>
+        </div>
+        <div class="card interactive">
+            <h4>Apoyo Digestivo</h4>
+            <p>Ricos en fibra, los arándanos promueven una digestión saludable y ayudan a prevenir el estreñimiento.</p>
+        </div>
+    </div>
+
+    <h3>Tabla de Nutrientes por Porción de 100g de Arándanos</h3>
+    <table class="info-table">
+        <thead>
+            <tr>
+                <th>Nutriente</th>
+                <th>Cantidad</th>
+                <th>% Valor Diario</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Calorías</td>
+                <td>57</td>
+                <td>3%</td>
+            </tr>
+            <tr>
+                <td>Grasas</td>
+                <td>0.3g</td>
+                <td>0%</td>
+            </tr>
+            <tr>
+                <td>Fibra</td>
+                <td>2.4g</td>
+                <td>10%</td>
+            </tr>
+            <tr>
+                <td>Vitamina C</td>
+                <td>9.7mg</td>
+                <td>16%</td>
+            </tr>
+            <tr>
+                <td>Vitamina K</td>
+                <td>19.3mcg</td>
+                <td>16%</td>
+            </tr>
+            <tr>
+                <td>Potasio</td>
+                <td>77mg</td>
+                <td>2%</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Estudios sobre los Beneficios de los Arándanos</h3>
+    <p>Un estudio de 2021 publicado en la revista <em>Journal of Nutritional Biochemistry</em> encontró que el consumo de arándanos puede mejorar la memoria y la salud cognitiva. Otro estudio en <em>The American Journal of Clinical Nutrition</em> destacó sus efectos positivos en la salud cardiovascular y la reducción de la inflamación.</p>
+</div>
+
+
+<!-- Juegos Interactivos -->
+<div id="juegos" class="section active" style="display: none;">
+    <h2>Juegos sobre los Arándanos</h2>
+    <p>¡Aprende mientras te diviertes! A continuación, encontrarás algunos juegos interactivos relacionados con los arándanos:</p>
+    <ul>
+        <div class="game">
+            <h3>Quiz sobre los Arándanos</h3>
+            <div class="quiz-container">
+                <form id="quiz-form">
+                    <p>1. ¿De dónde es originario el arándano?</p>
+                    <input type="radio" id="answer1" name="quiz" value="América del Norte">
+                    <label for="answer1">América del Norte</label><br>
+                    <input type="radio" id="answer2" name="quiz" value="Asia">
+                    <label for="answer2">Asia</label><br>
+                    <input type="radio" id="answer3" name="quiz" value="Europa">
+                    <label for="answer3">Europa</label><br>
+                    <input type="radio" id="answer4" name="quiz" value="África">
+                    <label for="answer4">África</label><br>
+
+                    <p>2. ¿Qué tipo de antioxidantes son abundantes en los arándanos?</p>
+                    <input type="radio" id="antioxidant1" name="quiz2" value="Antocianinas">
+                    <label for="antioxidant1">Antocianinas</label><br>
+                    <input type="radio" id="antioxidant2" name="quiz2" value="Flavonoides">
+                    <label for="antioxidant2">Flavonoides</label><br>
+                    <input type="radio" id="antioxidant3" name="quiz2" value="Carotenoides">
+                    <label for="antioxidant3">Carotenoides</label><br>
+                    <input type="radio" id="antioxidant4" name="quiz2" value="Luteína">
+                    <label for="antioxidant4">Luteína</label><br>
+
+                    <p>3. ¿Cuál de los siguientes beneficios se asocia con el consumo de arándanos?</p>
+                    <input type="radio" id="benefit1" name="quiz3" value="Mejora la memoria">
+                    <label for="benefit1">Mejora la memoria</label><br>
+                    <input type="radio" id="benefit2" name="quiz3" value="Aumenta el colesterol malo">
+                    <label for="benefit2">Aumenta el colesterol malo</label><br>
+                    <input type="radio" id="benefit3" name="quiz3" value="Causa deshidratación">
+                    <label for="benefit3">Causa deshidratación</label><br>
+                    <input type="radio" id="benefit4" name="quiz3" value="Promueve el insomnio">
+                    <label for="benefit4">Promueve el insomnio</label><br>
+
+                    <p>4. ¿En qué temporada se suelen cosechar los arándanos?</p>
+                    <input type="radio" id="season1" name="quiz4" value="Verano">
+                    <label for="season1">Verano</label><br>
+                    <input type="radio" id="season2" name="quiz4" value="Invierno">
+                    <label for="season2">Invierno</label><br>
+                    <input type="radio" id="season3" name="quiz4" value="Todo el año">
+                    <label for="season3">Todo el año</label><br>
+                    <input type="radio" id="season4" name="quiz4" value="Primavera">
+                    <label for="season4">Primavera</label><br>
+
+                    <p>5. ¿Cuál es un efecto positivo de los arándanos en la salud?</p>
+                    <input type="radio" id="effect1" name="quiz5" value="Mejora la salud ocular">
+                    <label for="effect1">Mejora la salud ocular</label><br>
+                    <input type="radio" id="effect2" name="quiz5" value="Aumenta el riesgo de diabetes">
+                    <label for="effect2">Aumenta el riesgo de diabetes</label><br>
+                    <input type="radio" id="effect3" name="quiz5" value="Reduce la inflamación">
+                    <label for="effect3">Reduce la inflamación</label><br>
+                    <input type="radio" id="effect4" name="quiz5" value="Promueve la obesidad">
+                    <label for="effect4">Promueve la obesidad</label><br>
+
+                    <button type="button" onclick="checkQuiz()">Enviar</button>
+                </form>
+                <p id="quiz-result" class="quiz-result"></p>
+            </div>
+        </div>
+    </ul>
+</div>
+        <!-- Ventanas Modales -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <p>Contenido del Modal</p>
+            </div>
+        </div>
+        <!-- Pie de Página -->
+<footer class="footer">
+    <div class="footer-content">
+        <p>&copy; 2024 Poguiagro. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+
+         
+    <!-- Scripts -->
+<script>
+
+function checkQuiz() {
+    const answers = {
+        quiz: 'América del Norte',
+        quiz2: 'Antocianinas',
+        quiz3: 'Mejora la memoria',
+        quiz4: 'Verano',
+        quiz5: 'Reduce la inflamación'
+    };
+
+    let score = 0;
+    let resultText = '';
+
+    // Verificar respuestas
+    Object.keys(answers).forEach((question, index) => {
+        const selectedAnswer = document.querySelector(`input[name="${question}"]:checked`);
+        if (selectedAnswer) {
+            if (selectedAnswer.value === answers[question]) {
+                resultText += `Pregunta ${index + 1}: Correcto!<br>`;
+                score++;
+            } else {
+                resultText += `Pregunta ${index + 1}: Incorrecto. La respuesta correcta es "${answers[question]}".<br>`;
+            }
+        } else {
+            resultText += `Pregunta ${index + 1}: No respondida.<br>`;
+        }
+    });
+
+    resultText += `Tu puntaje es: ${score} de ${Object.keys(answers).length}.`;
+    document.getElementById('quiz-result').innerHTML = resultText;
+}
+
+
+
+    document.querySelectorAll('.hover-info').forEach(item => {
+    item.addEventListener('mouseenter', event => {
+        const tooltip = document.getElementById('tooltip');
+        tooltip.innerHTML = item.getAttribute('data-info');
+        tooltip.style.display = 'block';
+        tooltip.style.left = event.pageX + 'px';
+        tooltip.style.top = event.pageY + 'px';
+    });
+
+    item.addEventListener('mouseleave', () => {
+        document.getElementById('tooltip').style.display = 'none';
+    });
+});
+
+    // Mostrar solo la sección seleccionada y ocultar las demás
+    function showSection(sectionId) {
+        const sections = document.querySelectorAll('.section'); // Selecciona todas las secciones
+        sections.forEach(section => {
+            section.style.display = 'none'; // Oculta todas las secciones
+        });
+        document.getElementById(sectionId).style.display = 'block'; // Muestra la sección seleccionada
+    }
+
+
+
+// Mostrar la sección de información al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    showSection('info');
+});
+
+    // Función para cerrar modal
+    function closeModal() {
+        document.getElementById('modal').style.display = 'none';
+    }
+</script>
+
+        </body>
+        </html>
+        

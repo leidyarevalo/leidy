@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación - Poguiagro</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Fondo y diseño de la página */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #e0f7fa, #b2dfdb); /* Gradiente de colores pastel */
+            background-attachment: fixed; /* Fijar el fondo para efecto parallax */
+            color: #333;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilos para el header */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: rgba(168, 213, 226, 0.8); /* Color pastel con opacidad */
+            padding: 10px 20px;
+            border-bottom: 2px solid #b3e4d2;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para el encabezado */
+        }
+
+        .header-logo {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-logo img {
+            height: 100px; /* Aumento del tamaño del logo */
+            transition: transform 0.3s ease;
+        }
+
+        .header-logo img:hover {
+            transform: scale(1.15);
+        }
+
+        .header-message {
+            background-color: #e0f7df; /* Color pastel */
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.3s;
+            cursor: pointer;
+            text-align: center;
+            flex: 2;
+        }
+
+        .header-message:hover {
+            background-color: #c1e3b2; /* Color pastel más claro */
+            transform: scale(1.05);
+        }
+
+        .header-message:active {
+            background-color: #a8d5e2; /* Color pastel más oscuro */
+            transform: scale(0.98);
+        }
+
+        .header-message a {
+            color: #005e4e; /* Color destacado */
+            text-decoration: none; /* Sin subrayado */
+            font-size: 20px; /* Reducción del tamaño de fuente */
+            font-weight: bold;
+        }
+
+        .header-message a:hover {
+            text-decoration: underline;
+        }
+
+        /* Estilos para el main */
+        main {
+            padding: 20px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente */
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para el contenido */
+            margin: 20px auto;
+            max-width: 1200px;
+            position: relative;
+        }
+
+        h2 {
+            color: #005e4e; /* Color destacado */
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            font-size: 28px;
+            transition: transform 0.3s ease;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 5px;
+            background-color: #005e4e;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease;
+        }
+
+        h2:hover::before {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        h2.clicked::before {
+            background-color: #004d40; /* Color más oscuro */
+        }
+
+        .presentacion {
+            font-size: 16px; /* Tamaño de fuente más pequeño */
+            color: #333;
+            margin: 20px auto;
+            line-height: 1.6;
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: #e0f7df; /* Color pastel */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+            max-width: 100%;
+            position: relative;
+            animation: textFadeIn 1s ease-in-out;
+        }
+
+        @keyframes textFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .presentacion:hover {
+            background-color: #c1e3b2; /* Color pastel más claro */
+            color: #005e4e; /* Color destacado */
+            transform: scale(1.02);
+        }
+
+        .presentacion:active {
+            background-color: #b2d4a3; /* Color pastel más claro */
+            color: #004d40; /* Color más oscuro */
+        }
+
+        /* Estilos para el carrusel de citas al final de la página */
+        .carousel {
+            position: relative;
+            width: 80%;
+            max-width: 900px; /* Mayor ancho para más espacio */
+            height: 120px; /* Mayor altura para una mejor visibilidad */
+            margin: 20px auto;
+            overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-inner {
+            display: flex;
+            width: 400%; /* Ajustado para mostrar 4 elementos */
+            height: 100%;
+            transition: transform 1s ease-in-out; /* Transición de transformación */
+        }
+
+        .carousel-item {
+            flex: 1;
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #005e4e; /* Color destacado */
+            font-size: 16px; /* Tamaño de fuente más pequeño */
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box;
+            background-color: #e0f7df; /* Color pastel de fondo */
+            border-right: 1px solid #b3e4d2; /* Línea divisoria entre citas */
+            transition: opacity 1s ease-in-out;
+        }
+
+        .carousel-item.hidden {
+            opacity: 0;
+        }
+
+        /* Estilos para el pie de página */
+        footer {
+            background-color: rgba(168, 213, 226, 0.8); /* Color pastel con opacidad */
+            padding: 20px;
+            margin-top: 40px; /* Espacio entre el contenido y el pie de página */
+            text-align: center;
+            font-size: 14px;
+            border-top: 2px solid #b3e4d2;
+            position: relative;
+            z-index: 1;
+        }
+
+        footer p {
+            margin: 0;
+        }
+/* Estilos para el video */
+.video-container {
+    max-width: 600px; /* Reducir el tamaño máximo del video */
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.video-container video {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.video-container video:hover {
+    transform: scale(1.05);
+}
+
+
+
+        /* Estilos para los perfiles */
+        .profiles {
+            margin: 20px auto;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .profile-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 250px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: scale(1.05);
+            background-color: #e0f7df; /* Color pastel de fondo */
+        }
+
+        .profile-card img {
+            border-radius: 50%;
+            max-width: 120px; /* Tamaño de la imagen del perfil */
+            margin-bottom: 10px;
+        }
+
+        .profile-card h3 {
+            margin: 10px 0;
+            color: #005e4e; /* Color destacado */
+        }
+
+        .profile-card p {
+            color: #333;
+        }
+
+        /* Estilos para el modal */
+        #modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .modal-content .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #005e4e; /* Color destacado */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-logo">
+            <img src="img/logo.jpg" alt="Logo Poguiagro">
+        </div>
+        <div class="header-message" id="headerMessage">
+            <a href="#modal" onclick="openModal()">¡Conocer es vivir!</a>
+        </div>
+    </header>
+
+    <main>
+        <h2 onclick="toggleContent(this)">Te Contamos Quiénes Somos y Qué Hacemos</h2>
+        <div class="presentacion" id="presentacionText">
+            <p>
+                Poguiagro es un proyecto enfocado en la agricultura sostenible y en la mejora de la producción agrícola en el municipio de Buenavista, Boyacá. Nuestro objetivo es proporcionar información valiosa y herramientas interactivas para los agricultores locales, ayudando a optimizar sus cultivos y a promover prácticas agrícolas responsables.
+            </p>
+        </div>
+
+        <div class="video-container">
+            <video src="videos/edi.mp4" controls></video>
+        </div>
+
+        <div class="profiles">
+            <div class="profile-card">
+                <img src="img/dayana.png" alt="Leidy Dayana Arevalo Cano">
+                <h3>Leidy Dayana Arévalo Cano</h3>
+                <p>Estudiante del Colegio José María Silva Salazar, apasionada por la agricultura sostenible.</p>
+            </div>
+            <div class="profile-card">
+                <img src="img/alejandro.jpg" alt="Gabriel Alejandro Rodríguez Peña">
+                <h3>Gabriel Alejandro Rodríguez Peña</h3>
+                <p>Estudiante del Colegio José María Silva Salazar, interesado en la tecnología agrícola.</p>
+            </div>
+            <div class="profile-card">
+                <img src="img/jessica.jpg" alt="Jessica Alexandra Wilchez Camacho">
+                <h3>Jessica Alexandra Wilchez Camacho</h3>
+                <p>Estudiante del Colegio José María Silva Salazar, enfocada en la investigación agrícola.</p>
+            </div>
+        </div>
+
+        <!-- Carrusel de citas al final de la página -->
+        <div class="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item">“El buen agricultor no solo cultiva su tierra, sino también su mente.”</div>
+                <div class="carousel-item">“La agricultura es el arte de transformar la naturaleza en abundancia.”</div>
+                <div class="carousel-item">“Conocimiento y práctica: el camino hacia una agricultura exitosa.”</div>
+                <div class="carousel-item">“El futuro de la agricultura es verde y sostenible.”</div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Poguiagro. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Modal -->
+    <div id="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>Información sobre el cuidado de Buenavista...</p>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('modal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        function toggleContent(element) {
+            const isClicked = element.classList.toggle('clicked');
+            document.getElementById('presentacionText').style.display = isClicked ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

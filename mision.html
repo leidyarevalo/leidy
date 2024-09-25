@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mision - Poguiagro</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Fondo y diseño de la página */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #e0f7fa, #b2dfdb); /* Degradado de colores pastel */
+            background-attachment: fixed; /* Fijar el fondo para efecto parallax */
+            color: #333;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* Estilos para el encabezado */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: rgba(168, 213, 226, 0.8); /* Color pastel con opacidad */
+            padding: 10px 20px; /* Ajuste del padding */
+            border-bottom: 2px solid #b3e4d2;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para el encabezado */
+            width: 100%;
+        }
+        .logo {
+            width: 80px; /* Ajusta el tamaño del logo */
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .logo:hover {
+            transform: scale(1.1);
+        }
+        .header-message {
+            flex-grow: 1;
+            text-align: center;
+            margin: 0 20px; /* Espaciado interno */
+        }
+        .header-message a {
+            color: #005e4e; /* Color destacado */
+            text-decoration: none; /* Sin subrayar */
+            font-size: 24px;
+            font-weight: bold;
+            display: block;
+            padding: 10px 20px; /* Espaciado interno */
+            background-color: #e0f7df; /* Color pastel */
+            border-radius: 15px; /* Bordes redondeados */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .header-message a:hover {
+            background-color: #c1e3b2; /* Color pastel más claro */
+            transform: scale(1.05);
+        }
+        .header-message a:active {
+            background-color: #a8d5e2; /* Color pastel más oscuro */
+            transform: scale(0.98);
+        }
+        /* Estilos para el main */
+        main {
+            padding: 20px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente */
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para el contenido */
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+        h2 {
+            color: #005e4e; /* Color destacado */
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            font-size: 28px;
+            transition: transform 0.3s ease;
+        }
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 5px;
+            background-color: #005e4e;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease;
+        }
+        h2:hover::before {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        h2.clicked::before {
+            background-color: #004d40; /* Color más oscuro */
+        }
+        .vision-text {
+            font-size: 18px;
+            color: #333;
+            margin: 20px auto;
+            line-height: 1.6;
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: #e0f7df; /* Color pastel */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+            max-width: 100%;
+            position: relative;
+            animation: textFadeIn 1s ease-in-out;
+        }
+        @keyframes textFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .vision-text:hover {
+            background-color: #c1e3b2; /* Color pastel más claro */
+            color: #005e4e; /* Color destacado */
+            transform: scale(1.02);
+        }
+        .vision-text:active {
+            background-color: #b2d4a3; /* Color pastel más claro */
+            color: #004d40; /* Color más oscuro */
+        }
+        .content-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .text-container {
+            flex: 1;
+            max-width: 60%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .video-container {
+            flex: 1;
+            max-width: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .video-container video {
+            width: 80%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border: 2px solid #005e4e; /* Personaliza el borde del video */
+        }
+        .video-container video:hover {
+            transform: scale(1.05);
+        }
+        /* Estilos para el nuevo contenido adicional */
+        .additional-content {
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 80%;
+            background-color: #e0f7df; /* Color pastel */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+        }
+        .additional-content h3 {
+            color: #005e4e; /* Color destacado */
+            margin-bottom: 10px;
+        }
+        /* Estilos para el pie de página */
+        footer {
+            background-color: rgba(168, 213, 226, 0.8); /* Color pastel con opacidad */
+            padding: 20px;
+            margin-top: 40px; /* Espacio entre el contenido y el pie de página */
+            text-align: center;
+            font-size: 14px;
+            border-top: 2px solid #b3e4d2;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para el pie de página */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="img/logo.jpg" alt="Poguiagro Logo" class="logo" id="logo">
+        <div class="header-message">
+            <a href="#" id="header-text">¡Conocer es vivir!</a>
+        </div>
+    </header>
+    
+    <main>
+        <h2 id="vision-heading">Nuestra Misión</h2>
+        <div class="content-container">
+            <div class="text-container">
+                <div class="vision-text">
+                    <p>
+                        En Poguiagro, nuestra misión es promover el desarrollo sostenible y la innovación en el sector agrícola de Buenavista, Boyacá. Nos comprometemos a mejorar la calidad de vida de nuestros agricultores mediante la implementación de tecnologías avanzadas y prácticas agrícolas responsables. Creemos en el potencial de nuestra región para convertirse en un líder en producción agrícola, garantizando seguridad alimentaria y preservación del medio ambiente.
+                    </p>
+                </div>
+            </div>
+            <div class="video-container">
+                <video controls>
+                    <source src="videos/mision.mp4" type="video/mp4">
+                    Tu navegador no soporta la reproducción de video.
+                </video>
+            </div>
+        </div>
+        <!-- Sección adicional en lugar del carrusel de citas -->
+        <div class="additional-content">
+            <h3>¿Por qué elegir Poguiagro?</h3>
+            <p>
+                Poguiagro ofrece soluciones innovadoras y sostenibles para mejorar la producción agrícola. Con un enfoque en la tecnología y el respeto por el medio ambiente, estamos aquí para apoyar a nuestros agricultores y promover un futuro próspero y saludable.
+            </p>
+        </div>
+    </main>
+    
+    <footer>
+        © 2024 Poguiagro. Todos los derechos reservados.
+    </footer>
+
+    <script>
+        // Script para manejar el encabezado
+        document.getElementById('header-text').addEventListener('click', function() {
+            alert('¡Conocer es vivir!');
+        });
+
+        // No se necesita script para el carrusel de citas ya que se eliminó
+    </script>
+</body>
+</html>

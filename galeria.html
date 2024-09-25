@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería - Poguiagro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        /* Fondo y diseño de la página */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #e8f5e9, #dcedc8);
+            color: #333;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilos para el header */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(168, 213, 226, 0.8);
+            padding: 10px 20px;
+            border-bottom: 2px solid #b3e4d2;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 20px; /* Espaciado entre elementos */
+        }
+
+        .header-logo img {
+            height: 100px;
+            transition: transform 0.3s;
+        }
+
+        .header-logo img:hover {
+            transform: scale(1.1); /* Efecto al pasar el cursor */
+        }
+
+        .header-message {
+            font-size: 20px;
+            color: #005e4e;
+            text-align: center;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .header-message:hover {
+            color: #00796b; /* Cambia el color al pasar el cursor */
+            transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+        }
+
+        /* Estilos para el main */
+        main {
+            padding: 20px;
+            background: rgba(240, 255, 240, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+
+        h2 {
+            color: #005e4e;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        h2:hover {
+            color: #00796b; /* Cambia el color al pasar el cursor */
+            transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+        }
+
+        /* Estilos para la tarjeta de descripción */
+        .description-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .description-card:hover {
+            transform: translateY(-5px); /* Eleva la tarjeta al pasar el cursor */
+            background-color: #f1f8e9; /* Cambia el color de fondo */
+        }
+
+        .description-card p {
+            margin: 0;
+            line-height: 1.6;
+            color: #555;
+            font-size: 18px;
+        }
+
+        /* Estilos para la galería */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background: #fff;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .description {
+            padding: 10px;
+            color: #333;
+            font-size: 14px;
+            line-height: 1.5;
+            text-align: center;
+        }
+        .gallery-item img {
+    width: 100%;
+    height: 400px; /* Ajusta la altura según lo necesites */
+    object-fit: cover; /* Mantiene la proporción de la imagen y la recorta si es necesario */
+    display: block;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="header-logo">
+                <img src="img/logo.jpg" alt="Logo Poguiagro">
+            </div>
+            <div class="header-message">
+                Bienvenidos a un mundo mágico conformado por paisajes de Buenavista
+            </div>
+        </div>
+    </header>
+    <main>
+        <h2>Galería de Paisajes</h2>
+        
+        <div class="description-card">
+            <p>
+                Buenavista es un encantador municipio en el departamento de Boyacá, Colombia. Conocido por su impresionante biodiversidad, ofrece un clima perfecto para cultivar productos agrícolas como el tomate y la guanábana. Sus paisajes cautivadores son ideales para disfrutar de la naturaleza y la tranquilidad.
+            </p>
+        </div>
+
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="img/agua1.jpg" alt="El Chorrerón de Vida">
+                <div class="description">Un hermoso chorrerón se despliega en medio de la naturaleza.</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/monta.jpg" alt="Descripción de la imagen 2">
+                <div class="description">Disfruta de la majestuosidad de los alrededores.</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/paison.jpg" alt="Descripción de la imagen 3">
+                <div class="description">Un paraje lleno de luz y vida.</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/sol.jpg" alt="Descripción de la imagen 5">
+                <div class="description">El sol se despide del día con colores vibrantes.</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/cole.jpg" alt="Descripción de la imagen 6">
+                <div class="description">Un lugar en donde la educacion  y la naturaleza se unen.</div>
+
+            </div>
+            <div class="gallery-item">
+                <img src="img/capaca.jpg" alt="Descripción de la imagen 7">
+                <div class="description">El Cerro de Capacapi, guardián de Buenavista.</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/atarde.jpg" alt="Descripción de la imagen 8">
+                <div class="description">Cada atardecer es un momento para reflexionar.</div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/amana.jpg" alt="Descripción de la imagen 9">
+                <div class="description">El cielo se viste de oro y carmesí.</div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

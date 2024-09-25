@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valores - Poguiagro</title>
+    <style>
+        /* Fondo y diseño de la página */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #e0f7fa, #b2dfdb);
+            background-attachment: fixed;
+            color: #333;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilos para el encabezado */
+        header {
+            background-color: rgba(168, 213, 226, 0.9);
+            padding: 10px 20px;
+            border-bottom: 2px solid #b3e4d2;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            color: #004d40;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        header:hover {
+            background-color: rgba(188, 231, 225, 0.9);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            width: 100px;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s, filter 0.3s;
+        }
+
+        .header-content {
+            flex: 1;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 5px 0;
+            font-size: 32px;
+            color: #004d40;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+            font-weight: bold;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        /* Estilos para el main */
+        main {
+            display: flex;
+            align-items: flex-start; /* Cambiar a flex-start para alinear al inicio */
+            padding: 20px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+
+        .table-container {
+            flex: 1; /* Igualar el espacio de la tabla y el video */
+            margin-right: 20px; /* Espacio entre tabla y video */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table, th, td {
+            border: 1px solid #004d40;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #004d40;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #e0f7df;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #fff;
+        }
+
+        td:hover {
+            background-color: #b2dfdb; /* Color pastel claro al pasar el cursor */
+            transform: scale(1.05); /* Escalar ligeramente la celda */
+        }
+
+        /* Estilo para el video */
+        .video-container {
+            flex: 1; /* Igualar el espacio de la tabla y el video */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 90px;
+        }
+
+        video {
+            width: 100%; /* Hacer que el video ocupe el 100% del contenedor */
+            height: auto;
+            border-radius: 10px;
+            border: 2px solid #004d40; /* Bordes color acorde */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        video:hover {
+            transform: scale(1.05); /* Efecto al pasar el cursor */
+        }
+
+        /* Estilos para el título de valores */
+        .title {
+            text-align: center;
+            font-size: 24px;
+            color: #004d40;
+            margin: 20px 0;
+            transition: color 0.3s;
+        }
+
+        .title:hover {
+            color: #00796b; /* Color al pasar el cursor */
+        }
+
+        /* Estilos para las tarjetas */
+        .cards-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: #e0f7fa;
+            border-radius: 10px;
+            padding: 15px; /* Ajustar el padding de las tarjetas */
+            width: 25%; /* Mantener el tamaño de las tarjetas */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, background-color 0.3s;
+            text-align: left;
+            margin: 10px; /* Espacio entre tarjetas */
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background-color: #b2dfdb;
+        }
+
+        /* Estilos para el pie de página */
+        footer {
+            background-color: rgba(168, 213, 226, 0.9);
+            padding: 20px;
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+            border-top: 3px solid #b3e4d2;
+            box-shadow: 0 -6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+            .video-container {
+                text-align: center;
+            }
+            video {
+                width: 400px; /* Ajusta el ancho aquí */
+                height: auto; /* Mantiene la proporción */
+            }
+        </style>
+</head>
+<body>
+    <header>
+        <img src="img/logo.jpg" alt="Poguiagro Logo" class="logo">
+        <div class="header-content">
+            <h1>"Principios fuertes, resultados grandes."</h1>
+            <p class="tagline">"Cultivamos principios sólidos para un futuro próspero."</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="table-container">
+            <h3 class="title">Valores</h3> <!-- Clase añadida -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Valor</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Respeto</td>
+                        <td>Valoramos a todos y promovemos un ambiente positivo.</td>
+                    </tr>
+                    <tr>
+                        <td>Colaboración</td>
+                        <td>Fomentamos el trabajo en equipo sin presión.</td>
+                    </tr>
+                    <tr>
+                        <td>Flexibilidad</td>
+                        <td>Nos adaptamos a cambios sin compromisos firmes.</td>
+                    </tr>
+                    <tr>
+                        <td>Apertura</td>
+                        <td>Promovemos la comunicación sin expectativas.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+       
+        
+        <div class="video-container">
+            <video controls>
+                <source src="videos/valores.mp4" type="video/mp4">
+            </video>
+        </div>
+        
+    </main>
+
+    <div class="cards-container">
+        <div class="card">
+            <h4>Neutralidad</h4>
+            <p>No nos comprometemos a posturas definitivas, priorizando la diversidad de opiniones.</p>
+        </div>
+        <div class="card">
+            <h4>Opciones Abiertas</h4>
+            <p>Mantenemos múltiples alternativas sin decidir por adelantado.</p>
+        </div>
+        <div class="card">
+            <h4>Transición</h4>
+            <p>Abrazamos el cambio sin apresurarnos a establecer nuevas normas.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Poguiagro. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

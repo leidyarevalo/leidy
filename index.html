@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poguiagro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+    
+        #welcome-screen {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            animation: fadeIn 1s ease-in-out; /* Animación de entrada */
+        }
+    
+        .background-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(70%);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            transition: transform 3s ease-in-out; /* Añade un efecto de zoom */
+        }
+    
+        .background-image:hover {
+            transform: scale(1.05); /* Zoom lento en hover */
+        }
+    
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(0, 0, 0);
+            text-align: center;
+            padding: 20px;
+        }
+    
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+    
+        h1 {
+            font-size: 2.5em; /* Reducción de tamaño */
+            margin-bottom: 20px;
+            transition: color 0.3s, transform 0.3s; /* Transición en color y tamaño */
+        }
+    
+        h1:hover {
+            color: #FFEB3B; /* Cambia de color en hover */
+            transform: scale(1.1); /* Aumenta ligeramente el tamaño */
+        }
+    
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            transition: color 0.3s, transform 0.3s;
+        }
+    
+        p:hover {
+            color: #081308; /* Cambia de color en hover */
+            transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+        }
+    
+        #start-button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+    
+        #start-button:hover {
+            background-color: #45a049;
+            transform: scale(1.1); /* Aumenta ligeramente el tamaño al hacer hover */
+        }
+    
+        #start-button:active {
+            background-color: #388E3C; /* Cambia el color cuando se presiona */
+            transform: scale(0.95); /* Reduce un poco el tamaño para efecto de "presión" */
+        }
+    
+        #main-content {
+            display: none;
+            padding: 20px;
+        }
+    
+        /* Animación de entrada y salida */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+    
+        header {
+            background-color: #b2e3b4; /* Verde claro */
+            color: #000000; /* Letra en negro */
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+        }
+    
+        header img {
+            width: 130px;
+            height: auto;
+            margin-right: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+    
+        header img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+    
+        .header-center {
+            text-align: center;
+            flex-grow: 1;
+        }
+    
+        header h1 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            margin: 0;
+            color: #000000; /* Letra en negro */
+            font-size: 1.8em; /* Reducción de tamaño */
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+    
+        header h1:hover {
+            color: #66b366; /* Verde medio */
+            transform: translateY(-5px);
+        }
+    
+        .marquee-container {
+            text-align: center;
+            width: 100%;
+            margin-top: 10px;
+        }
+    
+        .marquee-text {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 15s linear infinite;
+            color: #000000; /* Letra en negro */
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+    
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+    
+        .marquee-text:hover {
+            color: #44df44; /* Verde menta */
+            cursor: pointer;
+        }
+        .galeria img {
+            width: 150px;
+            height: auto;
+            margin: 10px;
+            border-radius: 5px;
+        }
+    
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #a4d7a8; /* Verde pasto */
+            box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+            position: relative;
+            z-index: 1;
+        }
+    
+        .dropdown-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 8px;
+        }
+    
+        .dropdown-menu > li {
+            position: relative;
+        }
+    
+        .dropdown-menu > li > a {
+            color: #000000; /* Letra en negro */
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            background-color: #8fd2a0; /* Verde hoja */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+    
+        .dropdown-menu > li > a:hover {
+            background-color: #68b47a; /* Verde más intenso */
+            box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+        }
+    
+        .dropdown-menu ul {
+            display: none;
+            position: absolute;
+            background-color: #8fd2a0; /* Verde hoja */
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 4;
+        }
+    
+        .dropdown-menu > li:hover > ul {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+    
+        .dropdown-menu ul li a {
+            color: #000000; /* Letra en negro */
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            background-color: #6fcaa8; /* Verde hoja más intenso */
+            transition: background-color 0.3s ease;
+        }
+    
+        .dropdown-menu ul li a:hover {
+            background-color: #5aa48e;
+        }
+    
+        main {
+            padding: 0px;
+            background-color: #eaf0e0; /* Verde pastel muy claro */
+        }
+    
+        .main-content {
+            text-align: center;
+            padding: 0px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .galeria img {
+            width: 150px;
+            height: auto;
+            margin: 10px;
+            border-radius: 5px;
+        }
+        /* Estilo para el título con interactividad */
+        .main-title {
+            color: #4a9a4a; /* Color verde para el título */
+            font-family: 'Roboto', sans-serif; /* Fuente diferente para el título */ 
+            font-size: 1.5em; /* Tamaño de fuente más grande */
+            margin-bottom: 10px;
+            transition: color 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
+        }
+    
+        .main-title:hover {
+            color: #3b7a3b; /* Color más oscuro al pasar el ratón */
+            transform: scale(1.05); /* Efecto de aumento al pasar el ratón */
+        }
+    
+        /* Estilo para el texto con interactividad */
+        .main-text {
+            font-size: 1.0em;
+            color: #555;
+            transition: color 0.3s ease; /* Transición suave del color */
+        }
+    
+        .main-text:hover {
+            color: #333; /* Color más oscuro al pasar el ratón */
+            text-decoration: underline; /* Subrayado al pasar el ratón */
+        }
+    
+        .climate-table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    
+        .climate-table th, .climate-table td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #d0e0d0;
+            position: relative;
+        }
+    
+        .climate-table th {
+            background-color: #a4d7a8; /* Verde pasto */
+            color: #000000; /* Letra en negro */
+        }
+    
+        .cultivo-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+            border: 1px solid #d0e0d0;
+            border-radius: 4px;
+            margin: 3px;
+            background-color: #f9f9f9; /* Blanco muy claro */
+            position: relative;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    
+        .cultivo-item:hover {
+            background-color: #d0f4f1; /* Verde agua muy claro */
+        }
+    
+        .cultivo-item img {
+            display: none;
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333333; /* Gris oscuro */
+            color: #ffffff;
+            padding: 5px;
+            border-radius: 5px;
+            white-space: nowrap;
+            z-index: 10;
+            font-size: 0.9em;
+            width: 150px;
+            height: auto;
+        }
+    
+        .cultivo-item:hover img {
+            display: block;
+        }
+    
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+    
+        .modal-content {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+        }
+    
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: #000000;
+        }
+    
+        footer {
+            background: #b2e3b4;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #ffffff;
+            margin-top: 20px;
+        }
+    
+        footer p {
+            margin: 0;
+            font-size: 14px;
+            color: #333;
+        }
+    
+        footer a {
+            color: #333;
+            text-decoration: none;
+        }
+    
+        footer a:hover {
+            text-decoration: underline;
+        }
+    
+
+        /* Agregar estilos adicionales si es necesario */
+
+/* Estilo para los botones del submenú */
+.dropdown-menu ul button {
+        background-color: #8fd2a0; /* Verde hoja */
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 5px 0;
+        transition: background-color 0.3s ease;
+    }
+
+    .dropdown-menu ul button:hover {
+        background-color: #68b47a; /* Verde más intenso */
+    }
+
+    .dropdown-menu ul button a {
+        color: rgb(0, 0, 0); /* Color de texto */
+        text-decoration: none; /* Sin subrayado */
+    }
+
+
+
+    .cultivo-table {
+    width: 100%; /* Ajusta al ancho completo */
+    border-collapse: collapse; /* Quita espacios entre celdas */
+    margin-top: 20px; /* Espacio arriba de la tabla */
+}
+
+.cultivo-table th, .cultivo-table td {
+    border: 1px solid #ddd; /* Borde suave para celdas */
+    padding: 10px; /* Espaciado interno */
+    text-align: left; /* Alineación del texto */
+}
+
+.cultivo-table th {
+    background-color: #333; /* Fondo para encabezados */
+    color: #fff; /* Color de texto para encabezados */
+}
+
+.cultivo-item {
+    position: relative; /* Para el posicionamiento de la imagen */
+}
+
+.cultivo-item img {
+    width: 100px; /* Ajusta el ancho que desees */
+    height: 100px; /* Ajusta la altura que desees */
+    object-fit: cover; /* Asegura que la imagen cubra el área sin deformarse */
+    border-radius: 50px; /* Redondea los bordes */
+    display: none; /* Oculta las imágenes inicialmente */
+}
+
+.cultivo-item:hover img {
+    display: block; /* Muestra la imagen al pasar el ratón */
+    position: absolute; /* Posiciona la imagen emergente */
+    background: #333; /* Fondo opcional para mayor contraste */
+    color: #fff; /* Color de texto opcional */
+    padding: 5px; /* Espaciado opcional */
+    border-radius: 5px; /* Bordes redondeados opcionales */
+    z-index: 10; /* Asegura que la imagen esté encima */
+}
+
+.cultivo-item:hover {
+    background-color: #f4f4f4; /* Color de fondo al pasar el ratón */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+.cultivo-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Color alternado para filas */
+}
+
+.cultivo-table tr:hover {
+    background-color: #e0e0e0; /* Color de fondo al pasar el ratón sobre filas */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+
+    .header-center {
+    display: flex;
+    flex-direction: column; /* Apila verticalmente */
+    align-items: center; /* Centra horizontalmente */
+}
+
+.marquee-container {
+    margin-top: 10px; /* Espacio opcional entre el título y el marquee */
+}
+
+.social-media {
+    align-self: flex-end; /* Alinea los enlaces a la derecha */
+    margin-top: 10px; /* Espacio entre el marquee y los enlaces */
+}
+
+
+.social-media a {
+    text-decoration: none;
+    color: #000; /* Color inicial */
+    margin: 0 10px; /* Espacio entre los enlaces */
+}
+
+.social-media a:hover {
+    color: #007bff; /* Color al pasar el cursor */
+}
+
+.social-media a:active {
+    color: #0056b3; /* Color al hacer clic */
+}
+
+
+
+
+
+
+
+    </style>
+</head>
+<body></body>
+    <!-- Pantalla de bienvenida -->
+         <script src="script.js"></script>
+
+    <div id="welcome-screen">
+        <div class="overlay">
+            <img src="img/iglesia.jpeg" alt="Imagen de Bienvenida" class="background-image">
+            <div class="content">
+                <h1> ¡Bienvenid@ a Poguiagro, donde crece el conocimiento! 🌻 </h1>
+                <p>Conoce los cultivos clave de cada piso térmico y mejora tu producción.</p>
+                <button id="start-button">Comenzar con esta Aventura</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+
+<header>
+    <img src="img/logo.jpg" alt="Logo Poguiagro">
+    <div class="header-center">
+        <h1>Bienvenid@s a Poguiagro</h1>
+        <div class="marquee-container">
+            <div class="marquee-text">¡Conocer es vivir!</div>
+        </div>
+        <div class="social-media">
+            <div class="social-media">
+                <a href="https://www.facebook.com/profile.php?id=61558672400381" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/poguiagro/" target="_blank">Instagram</a>
+        </div>
+    </div>
+</header>
+
+
+
+
+    <nav>
+        <ul class="dropdown-menu">
+            <li><a href="#" data-modal="modal-inicio">Inicio</a></li>
+            <li>
+                <a href="#">Información</a>
+                <ul>
+                    <button><a href="vision.html">Visión</a></button>
+                    <button><a href="mision.html">Mision</a></button>
+                    <button><a href="valores.html">Valores</a></button>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Acerca de Nosotros</a>
+                <ul>
+                    <button><a href="presentacion.html">Presentación</a></button>
+                    <button><a href="dedicamos.html">A que nos dedicamos</a></button>
+
+                </ul>
+
+            </li>
+            <li>
+                <a href="#">Más Opciones</a>
+                <ul>
+                    <button><a href="pisostermicos.html">Pisos termicos</a></button>
+                    <button><a href="galeria.html">Galería</a></button>
+                    <button><a href="sabias que.html">Sabias que</a></button>
+
+
+                </ul>
+
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <main>
+            <div class="main-content">
+                <h1 class="main-title">Conoce y aprende sobre la agricultura</h1>
+                <p>En Poguiagro, podrás encontrar información confiable y segura que te podrá ser de gran ayuda a la hora de iniciar tu vida en el campo.</p>
+            </div>
+        </main>
+        
+        <table class="climate-table">
+            <thead>
+                <tr>
+                    <th>Zonas Climáticas</th>
+                    <th colspan="3">Cultivos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Fría</td>
+                    <td>
+                        <a href="tomate.html" class="cultivo-item">Tomate
+                            <img src="img/tomate.jpg" alt="Tomate">
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="lulo.html" class="cultivo-item">Lulo
+                         <img src="img/ñ+lulo.jpg" alt="lulo">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="papa.html" class="cultivo-item">Papa
+                            <img src="img/papa.jpg" alt="papa">
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Cálida</td>
+                    <td>
+                        <a href="caña.html" class="cultivo-item">Caña
+                            <img src="img/caña.jpg" alt="Caña">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="aguacate.html" class="cultivo-item">Aguacate
+                            <img src="img/aguacate.jpg" alt="Aguacate">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="cafe.html" class="cultivo-item">Cafe
+                            <img src="img/cafe.jpg" alt="Cafe">
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Caliente</td>
+                    <td>
+                        <a href="arandano.html" class="cultivo-item">Arándano
+                            <img src="img/arandano.jpg" alt="Arándano">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="guanabana.html" class="cultivo-item">Guanabana
+                            <img src="img/guanabana.jpg" alt="Guanabana">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="pitaya.html" class="cultivo-item">Pitaya
+                            <img src="img/pitayca.jpg" alt="Pitaya">
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+
+    <footer>
+        <p>&copy; 2024 Poguiagro. Todos los derechos reservados. | <a href="#">Política de Privacidad</a> | <a href="#">Términos de Servicio</a></p>
+    </footer>
+    <script>
+
+// script.js
+
+document.addEventListener('DOMContentLoaded', function() {
+    const startButton = document.getElementById('start-button');
+    const welcomeScreen = document.getElementById('welcome-screen');
+    const mainContent = document.getElementById('main-content');
+
+    startButton.addEventListener('click', function() {
+        // Añadir animación de desvanecimiento
+        welcomeScreen.style.animation = 'fadeOut 1s ease-in-out';
+        setTimeout(function() {
+            welcomeScreen.style.display = 'none';
+            mainContent.style.display = 'block';
+        }, 1000); // Tiempo ajustado para la transición de desvanecimiento
+    });
+});
+
+        document.querySelectorAll('[data-modal]').forEach(el => {
+            el.addEventListener('click', function(e) {
+                e.preventDefault();
+                const modalId = this.getAttribute('data-modal');
+                document.getElementById(modalId).style.display = 'flex';
+            });
+        });
+
+        document.querySelectorAll('.modal-close').forEach(el => {
+            el.addEventListener('click', function() {
+                this.closest('.modal').style.display = 'none';
+            });
+        });
+
+        window.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                e.target.style.display = 'none';
+            }
+        });
+
+
+
+
+
+        
+    </script>
+</body>
+</html>
